@@ -563,10 +563,22 @@ def insert_inventory(session: Session):
         raise
 
 
-def insert_orders_and_items(session: Session, num_orders: int = 100000):
+def insert_orders_and_items(
+    session: Session,
+    num_orders: int = 100000,
+    start_date: str = "2023-01-01",
+    end_date: str = "2026-12-31",
+):
     """Insert order and order item data (NO seasonal variations)"""
     try:
-        logging.info(f"Generating {num_orders:,} orders...")
+        from datetime import datetime
+
+        logging.info(f"Generating {num_orders:,} orders from {start_date} to {end_date}...")
+
+        # Parse date strings
+        start = datetime.strptime(start_date, "%Y-%m-%d").date()
+        end = datetime.strptime(end_date, "%Y-%m-%d").date()
+        date_range_days = (end - start).days
 
         # Get customers
         customer_ids = [c.customer_id for c in session.query(Customer.customer_id).all()]
@@ -588,8 +600,9 @@ def insert_orders_and_items(session: Session, num_orders: int = 100000):
         for i in range(num_orders):
             customer_id = random.choice(customer_ids)
             store_id = random.choice(store_ids)
-            # Random date in last 2 years (NO seasonal variation)
-            order_date = date.today() - timedelta(days=random.randint(0, 730))
+            # Random date within specified date range
+            days_offset = random.randint(0, date_range_days)
+            order_date = start + timedelta(days=days_offset)
 
             order = Order(customer_id=customer_id, store_id=store_id, order_date=order_date)
             order_objects.append(order)
@@ -755,6 +768,8 @@ def main():
     parser.add_argument("--show-stats", action="store_true", help="Show database statistics")
     parser.add_argument("--num-customers", type=int, default=10000, help="Number of customers (default: 10000)")
     parser.add_argument("--num-orders", type=int, default=100000, help="Number of orders (default: 100000)")
+    parser.add_argument("--start-date", type=str, default="2023-01-01", help="Start date for orders (YYYY-MM-DD, default: 2023-01-01)")
+    parser.add_argument("--end-date", type=str, default="2026-12-31", help="End date for orders (YYYY-MM-DD, default: 2026-12-31)")
 
     args = parser.parse_args()
 
@@ -797,7 +812,7 @@ def main():
             # Insert transactional data
             insert_customers(session, num_customers=args.num_customers)
             insert_inventory(session)
-            insert_orders_and_items(session, num_orders=args.num_orders)
+            insert_orders_and_items(session, num_orders=args.num_orders, start_date=args.start_date, end_date=args.end_date)
 
             # Insert agent support data
             insert_agent_support_data(session)
@@ -807,7 +822,7 @@ def main():
 
             logging.info("\n✅ Zava DIY database generation completed successfully!")
             logging.info(f"Database location: {SQLITE_DB_FILE}")
-            logging.info(f"\nTo view statistics: uv run python -m zava_shop_datagenerator --show-stats")
+            logging.info("\nTo view statistics: uv run python -m zava_shop_datagenerator --show-stats")
 
         finally:
             session.close()
