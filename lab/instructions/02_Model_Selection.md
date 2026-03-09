@@ -6,7 +6,7 @@ In this section, you will explore the AI Toolkit Model Catalog to discover, filt
 
 1. Locate the **AI Toolkit** extension icon in the left sidebar
 2. Click on the AI Toolkit icon to open the extension panel
-3. Click on **Model Catalog** to browse available models
+3. Under **Developer Tools**, expand the **Discover** section and click on **Model Catalog** to open the catalog interface
 
 ![Model Catalog](../../img/model_catalog.png)
 
@@ -18,71 +18,49 @@ Since the list is quite consistent, you can use the filtering options to narrow 
 
 ### Filter by Hosting Provider
 
-1. Click on the **Hosted by** filter dropdown. You have several options, such as GitHub, Microsoft Foundry, OpenAI and you can even leverage models hosted on your local infrastructure, through Ollama or ONNX.
+1. Click on the **Hosted by** filter dropdown. You have several options, such as GitHub (providing free-to-use token-rate limited models), Microsoft Foundry, OpenAI, and you can even leverage models hosted on your local infrastructure, through Ollama or ONNX.
 
-2. Select **GitHub** to view free-to-use models that are excellent for prototyping.
-
-> [!NOTE]
-> GitHub models are perfect for getting started because they're free to use, but they are token-rate limited. You can experiment without cost concerns, but for production deployments consider using a pay-as-you-go offering through your GitHub Account or Microsoft Foundry.
+2. Select **Microsoft Foundry** to view models hosted in Microsoft Foundry, which provide enterprise-grade security and compliance features, ideal for enterprise applications.
 
 ### Filter by Publisher
 
 1. Click on the **Publisher** filter dropdown to filter by the model publisher, such as Microsoft, Meta, Cohere, etc. Note that you can find both open-source and proprietary models.
-2. Select **OpenAI** and **Mistral AI** to view models from these two leading providers.
+2. Select **DeepSeek** to view models from this leading provider.
 
 ### Filter by Model Feature
 
 1. Click on the **Feature** filter dropdown to filter by model capabilities, such as image/audio or video processing, tool calling, etc.
 2. Select **Image Attachment** to find multimodal models that support visual input processing and enables multimodal interactions combining text and images.
 
-## Step 2: Add Models to Your Collection
+## Step 2: Deploy Models to Your Subscription
 
-After applying filters, you'll see a refined list of models. 
+After applying filters, you'll see a refined list of models.
+Locate **Deep Seek R1** in the filtered results. It's a multimodal model with strong reasoning capabilities, using a step-by-step training process.
 
-For this exercise:
-
-1. Locate the **OpenAI GPT-4o** and **Mistral Small 3.1** models in the filtered results.
-   - **OpenAI GPT-4o** is a full-featured multimodal model with comprehensive capabilities
-   - **Mistral Small 3.1** is an optimized smaller model with faster response times and lower costs.
-   
-> [!TIP]
-> If you cannot see one of the two models, click on **Show more** to see the complete list of filtered models.
->
-> ![View All](../../img/view_all.png)
-> Alternatively, you can also search for the model names directly using the search bar at the top left of the Model Catalog panel.
-
-2. Click **Add model** on the *Mistral Small 3.1* model tile to add it to your collection. Repeat the same for **OpenAI GPT-4o**.
+2. Click **Deploy** on the model tile to open the deployment configuration window.  
 
 ![Add Model](../../img/add_model.png)
 
-> [!NOTE]
-> Once they are added, you'll see a green label with the text **Added**.
+3. Drag the slider of the **Token Per Minute** rate to the right to increase it to 115K. Leave the other parameters as default and click on **Deploy to Microsoft Foundry** to provision an instance of the model to your subscription.
+
+![Deployment Configuration](../../img/deployment_configuration.png)
 
 ## Step 3: Open the Playground for Testing
 
-1. Click on **Try in Playground** within the model tile. The Playground allows you to test and compare models interactively.
-
+1. In the left sidebar, locate the **My Resources** section and expand the resources under your Microsoft Foundry project.
+1. Right-click on the model instance you just deployed and then select **Open in Playground** from the dropdown menu to start testing the model in the Playground interface.
 ![Try in playground](../../img/try_in_playground.png)
 
-2. You'll be prompted to login to your GitHub account to access the free-tier models. Click **Allow** and complete the authentication process, by using the same GitHub credentials you used in the previous lab section.
-
-> [!TIP]
-> Now that you are logged in, you should be able to see the models you added into your collection in the 'My resources' tab, under 'GitHub', in the AI Toolkit extension panel.
->
-> ![Model collection](../../img/model_collection.png)
->
-> If you don't see them, click on the refresh icon to update the view.
-
-3. In the **Model** field, you'll see the name of the model you just selected, for example **Mistral Small 3.1 (via GitHub)**. 
+2. In the **Model** field, you'll see the name of the model you just selected. 
 
 ![Model Playground](../../img/model_playground.png)
 
 > [!WARNING]
 > You might experience some delay in model loading, especially if it's your first time accessing the Playground. Please be patient while the model initializes.
 
-4. Next, click the **Compare** button to enable side-by-side comparison
-5. From the dropdown, select your second model (OpenAI GPT-4o if Mistral Small 3.1 is already selected)
-6. You now have two models ready for comparison testing
+3. Next, click the **Compare** button to enable side-by-side comparison
+4. From the dropdown, select **gpt-5.3-chat** deployment that has been pre-deployed for this workshop in Microsoft Foundry
+5. You now have two models ready for comparison testing
 
 ![Model Comparison](../../img/model_comparison.png)
 
@@ -101,9 +79,6 @@ I’m a store manager at a DIY retailer. What are the most important metrics to 
 2. Click the paper airplane icon to execute the prompt on both models simultaneously
 
 ![Test the model](../../img/test_the_model.png)
-
-> [!WARNING]
-> Since you are testing a free-tier GitHub-hosted model experience, you might encounter some latency in model response times, especially for more complex prompts.
 
 Now let's test their reasoning capabilities, with the following prompt:
 ```
@@ -147,13 +122,7 @@ Review the outputs from both models, using several factors to guide your evaluat
 - **Response Quality**: Compare the depth and accuracy of descriptions, as well as the coherence with the input prompt.
 - **Detail Level**: Which model provides more comprehensive analysis?
 - **Processing Time**: Note any differences in response speed.
-- **Output Formatting**: Evaluate clarity and organization of responses, as well as verbosity.
-- **Token Usage**: Inspect the token usage for each model to understand cost implications. Note that token usage may vary not only based on the verbosity of the response but also on the tokenizer efficiency of each model.
-
-> [!TIP]
-> Number of output tokens is visible in the response footer, along with characters length. LLMs are non-deterministic, so you might see slight variations in token usage across multiple runs with the same input prompt.
->
-> ![Token usage](../../img/token_usage.png)
+- **Output Formatting**: Evaluate clarity and organization of responses, as well as verbosity. Note that the verbosity of the model influences token usage and cost.
 
 ### Leverage GitHub Copilot for Comparative Analysis
 
@@ -163,7 +132,7 @@ To access GitHub Copilot Chat, select the **Toggle Chat** icon at the top of the
 
 ![Toggle chat button.](../../img/toggle-chat.png)
 
-Ensure you have *Claude Sonnet 4.5* model selected. Otherwise, expand the dropdown menu to select it.
+Expand the model selection dropdown to pick *Claude Sonnet 4.5*.
 ![Select claude Sonnet 4.5](../../img/select_claude_sonnet.png)
 
 > [!WARNING]
@@ -172,33 +141,24 @@ Ensure you have *Claude Sonnet 4.5* model selected. Otherwise, expand the dropdo
 Try the following prompt in the Copilot chat window:
 
 ```
-I am exploring models for an AI agent that should support Zava - a DIY retailer with 20 stores across the United States and an online channel - on store operations and head office sales analysis. I am evaluating Mistral Small 3.1 and OpenAI GPT-4o. Which one would you recommend for this scenario, and why? Explain the trade-offs between models (e.g., reasoning ability, cost, latency, context length) so that I can make an informed choice.
+I am exploring models for an AI agent that should support Zava - a DIY retailer with 20 stores across the United States and an online channel - on store operations and head office sales analysis. I am evaluating DeepSeek R1 and OpenAI GPT-5.3-chat. Which one would you recommend for this scenario, and why? Explain the trade-offs between models (e.g., reasoning ability, cost, latency, context length) so that I can make an informed choice.
 ```
 
-To answer this, Copilot calls the *Get AI Model Guidance* tool of the AI Toolkit, which provides model recommendations based on your use case. In the response, you should see an expandable section with the details of the tool call, followed by the comparative analysis.
+To answer this, Copilot leverages the *AI Model Guidance* skill of the AI Toolkit, which provides model recommendations based on your use case. In the response, you should see a detailed comparison between the two models, along with a recommendation on which one to select for your AI agent project.
 
 ![Get AI model guidance](../../img/get_ai_model_guidance.png)
 
 > [!NOTE]
-> If GitHub Copilot doesn't invoke the AI Toolkit tools when generating its response, you can enter `#aitk` in the chat window to explicitly select which tool(s) you'd like GitHub Copilot to use prior to submitting your prompt.
+> If you don't see any reference to the AITK Model Guidance in Copilot response, you can enter `#aitk` in the chat window to explicitly select which tool(s) you'd like GitHub Copilot to use prior to submitting your prompt.
 
 ## Step 6: Import selected model from Microsoft Foundry
 
-Once we are done with the comparison, we are going to select one of the two models for further prototyping in the next lab sections. For the sake of this exercise, let's go with **GPT-4o**. 
+Once we are done with the comparison, we are going to select one of the two models for further prototyping in the next lab sections. For the sake of this exercise, let's go with **GPT-5.3-chat**.
 
 > [!TIP]
 > To come back to the standard Playground (with a single pane and a single model),you can click on **Select this model** on the right side of the model name.
 >
 > ![Select this model](../../img/select_this_model.png)
-
-Now, since in the next section we are going to augment the model with additional context data relative to Zava, our DIY retail company, we need to switch to a model hosted in Microsoft Foundry, which provides enterprise-grade security and compliance features.
-
-Go back to **Model Playground** and expand the **Model** dropdown and select the gpt-4o instance hosted in Microsoft Foundry, that has been pre-deployed for this workshop, in the project you logged into in the [previous lab section](./01_Get_Started.md).
-
-![Select Azure Model](../../img/select_azure_model.png)
-
-> [!NOTE]
-> While GitHub models are excellent for prototyping, Microsoft Foundry hosted models provide the enterprise features needed for production deployments, including enterprise-grade security and compliance, Service Level Agreements (SLAs), enhanced performance and scalability, and integration with other Azure services.
 
 ## Key Takeaways
 

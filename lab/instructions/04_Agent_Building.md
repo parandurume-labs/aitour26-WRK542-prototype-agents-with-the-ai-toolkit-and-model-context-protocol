@@ -4,7 +4,9 @@ In this section, you will learn how to create the Cora agent with Agent Builder 
 
 ## Step 1: Explore Agent Builder
 
-To access Agent Builder, in the AI Toolkit view, select **Agent Builder**.
+To access Agent Builder, in the AI Toolkit view, locate the **Build** section under **Development Tools**. Expand it and click on **Create Agent**. Next, select **Design with Builder** to open the Agent Builder interface in a new tab within Visual Studio Code.
+
+![Create New Agent](../../img/create-new-agent.png)
 
 ![Agent Builder](../../img/agent-builder.png)
 

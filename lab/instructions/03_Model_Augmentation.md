@@ -14,6 +14,11 @@ The system message is a critical component of the prompt that sets the behavior 
 
 4. **Break Down Complex Instructions**: If the task is complex, consider breaking it down into simpler, step-by-step instructions to guide the model effectively.
 
+First thing first, let's clear the chat history in the Playground to start with a clean slate. Click on **New Playground** at the top left corner of the screen.
+
+![New Playground](../../img/new_playground.png)
+
+
 In the **System Prompt** field of the Playground, in the right pane, enter the following system message:
 
 ```
