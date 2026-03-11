@@ -8,7 +8,7 @@ To access Agent Builder, in the AI Toolkit view, locate the **Build** section un
 
 ![Create New Agent](../../img/create-new-agent.png)
 
-![Agent Builder](../../img/agent-builder.png)
+<!--![Agent Builder](../../img/agent-builder.png)-->
 
 Agent Builder's UI is organized into two sections. The left side of Agent Builder enables you to define the basic information for the agent such as its name, model choice, instructions, and any relevant tools. The right side of Agent Builder is where you can both chat with the agent and evaluate the agent's responses.
 
@@ -18,9 +18,9 @@ Agent Builder's UI is organized into two sections. The left side of Agent Builde
 
 ## Step 2: Create the Agent
 
-Let's create Zava's Cora agent! In **Agent Builder** select **+ New Agent**. Within the **Agent name** field, enter **Cora**. For the agent's **Model**, select the **gpt-4o (via Microsoft Foundry)** model instance.
+Let's create Zava's Cora agent! Within the **Agent name** field, enter **Cora**. For the agent's **Model**, select the **gpt-5.3-chat (via Microsoft Foundry)** model instance.
 
-![Agent Basic Information](../../img/agent-basic-information.png)
+<!--![Agent Basic Information](../../img/agent-basic-information.png)-->
 
 ## Step 3: Provide Instructions for the Agent
 
@@ -28,8 +28,10 @@ Similarly to what we've previously done in the Model Playground, we'll now need 
 
 > [!TIP]
 > The Agent Builder provides a **Generate** feature that uses a large language model (LLM) to generate a set of instructions from a description of your agent's task. 
-> This feature is helpful if you need guidance in crafting the agent's instructions.
-> ![Generate Agent Instruction](../../img/generate-agent-instruction.png)
+> It also offers a **Inspire** feature that provides a sample set of instructions that you can use as a starting point for your agent.
+> Both features are helpful if you need guidance in crafting the agent's instructions.
+
+<!-->![Generate Agent Instruction](../../img/generate-agent-instruction.png)-->
 
 For the sake of this lab, we'll leverage a set of instructions similar to the one we used in the [previous section](./03_Model_Augmentation.md):
 
@@ -129,13 +131,6 @@ Double check that you get the message `Uvicorn is running on port XXXX` in both 
 > Alternatevely, you can also start the MCP servers through the UI, by navigating to the 'Run and Debug' tab in Visual Studio Code and then clicking the green play button on the top.
 > ![Run and debug](../../img/run-and-debug.png)
 
-Next, navigate to the mcp servers configuration file, located at ./.vscode/mcp.json and click on the *Start* button above each Zava MCP server name.
-
-![MCP start buttons](../../img/mcp_json_start_buttons.png)
-
-> [!WARNING]
-> If you used GitHub Copilot Chat in previous steps of the lab, you might see a *Restart* button instead. This happens because GitHub Copilot Chat by default tries to start all the MCP servers defined in the mcp.json file when it is opened. The initial start attempt failed though as the servers were not running yet. In this case, simply click the *Restart* button to enable the AI Toolkit to connect to the already running MCP servers.
-
 ## Step 5: Add the MCP Server Sales Tools to the Agent
 
 For this lab, we’ll give the agent a small, focused set of tools from both servers (enough to search products, check stock, run sales queries, and perform a transfer with confirmation).
@@ -144,21 +139,14 @@ Back in Agent Builder, select the **+** icon next to **Tools** to open the wizar
 
 ![Add tool.](../../img/add-tool.png)
 
-Then select the **MCP Server** option. When prompted, select **Use Tools Added in Visual Studio Code**.
+In the **Configured** tab, scroll down to the **Local Tools** section, and select **zava-sales-analysis-server**.
 
-1. Unselect all tools by unchecking the box at the top of the wizard next to the search bar.
-   ![Deselect all tools.](../../img/deselect-all-tools.png)
-1. In the list of tools available, type **sales** to filter the list of MCP Server tools.
-1. Select these four tools.
-- `mcp_zava-sales-an_semantic_search_products`
-- `mcp_zava-sales-an_execute_sales_query`
-- `mcp_zava-sales-an_get_database_schema`
-- `mcp_zava-sales-an_get_current_utc_date`
-1. Select **OK**.
-   ![Select Sales Tools](../../img/select-sales-tools.png)
+![Select Sales Analysis Server](../../img/select-sales-analysis-server.png)
+
+Now you should see the server listed under the **Tool** section of your agent.
 
 > [!NOTE]
-> Ensure the Sales Analysis MCP server is running before adding these tools. If the server is not running, the tools will not appear in the list.
+> Ensure the Sales Analysis MCP server is running before adding its tools to your agent. .
 
 ## Step 6: Test Sales Queries with the Agent
 
@@ -205,21 +193,14 @@ What are our top 3 selling products last year
 ### Step 7: Add the Inventory MCP Server Tools to the Agent
 
 Now let's add the inventory tools to the agent, so it can check stock levels and perform safe transfers.
+To do that you should repeat the same steps you've done to configure the sales tools.
 
-1. First, back in Agent Builder, select **Edit Tool List** button within the **Tool** section, to open the wizard for editing tools to the agent.
-
-![Edit Tool List](../../img/edit-tool-list.png)
-1. Type **invent** to filter the tools
-1. Select both tools:
-
-    - `mcp_zava-inventor_get_stock_level_by_product_id`
-    - `mcp_zava-inventor_transfer_stock`
-
-4. Select **OK**
-   ![Select Inventory Tools](../../img/select-inventory-tools.png)
+1. Click on the **+** icon next to **Tools** in the Agent Builder interface.
+2. In the **Configured** tab, scroll down to the **Local Tools** section, and select **zava-inventory-server**.
+3. Now you should see the inventory server listed under the **Tool** section of your agent, alongside the sales server.
 
 > [!NOTE]
-> Ensure the Inventory MCP server is running before adding these tools. If the server is not running, the tools will not appear in the list.
+> Ensure the Inventory MCP server is running before adding its tools to your agent.
 
 ## Step 8: Test Inventory Checks and Transfers with the Agent
 

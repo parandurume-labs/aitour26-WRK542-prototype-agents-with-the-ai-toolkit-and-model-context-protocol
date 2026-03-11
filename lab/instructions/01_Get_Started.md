@@ -49,23 +49,19 @@ Copy and paste the following command block to the terminal and press **Enter**. 
 
 ## Authenticate to Azure
 
-In your Visual Studio Code instance, you should be able to see two extensions already installed: 
-- The **AI Toolkit**: this is the extension we will be using to interact with various AI models and services in this lab.
-- The **Microsoft Foundry** extension: it's installed as a bundle of the AI Toolkit and provides access to Microsoft Foundry hosted models. 
-If they are correctly installed, you should see their icons in the left sidebar of VS Code, as per screenshot below.
+In your Visual Studio Code instance, you should be able to see the AI Toolkit extension already installed. Click on it to open the AI Toolkit sidebar.
 
 ![Installed extensions](../../img/installed_extensions.png)
 
 > [!TIP]
-> If you don't see the icons, click on the ellipsis (...) at the bottom of the sidebar to see the full list of installed extensions. 
+> If you don't see the AITK icon, click on the ellipsis (...) at the bottom of the sidebar to see the full list of installed extensions.
 
 > [!WARNING]
 > Auto-update of the VS Code extensions has been disabled to ensure consistency with the lab manual instructions and avoid unexpected issues. Please refrain from updating these extensions during the lab.
 
+Next, click on **Set Default Project** -> **Sign in to Azure**.
 
-Now click on the Microsoft Foundry extension icon, and then click on **Set Default Project** -> **Sign in to Azure**.
-
-![Set Default Project](../../img/set_default_project.png)
+<!--![Set Default Project](../../img/set_default_project.png)-->
 
 You'll be prompted with a popup to confirm with the Azure login. Click **Allow**.
 
@@ -81,6 +77,8 @@ Next, you'll be redirected to a window to complete the login process. Enter the 
 Back in your VS Code instance, you'll be asked to select the Foundry project to use. Select the only available option, which is the project pre-deployed for this workshop.
 
 ![Select Project](../../img/select_project.png)
+
+If the login process was successful, you should now see your project listed under **My resources**. From there, you'll be able to access and manage the project resources, like models, agents and tools.
 
 ## Enable GitHub Copilot AI features
 
