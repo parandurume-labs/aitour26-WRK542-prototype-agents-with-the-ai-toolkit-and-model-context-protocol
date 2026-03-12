@@ -222,6 +222,14 @@ What was the total revenue last month, split by online vs physical stores?
 Which stores have low stock on circuit breakers right now?
 ```
 
+## Save your agent locally
+
+Once you're done with testing, make sure to click on the **Save to Local** button at the top right corner of the Agent Builder interface to save your agent configuration locally. This will allow you to load and use the same agent configuration in the future without having to recreate it from scratch.
+
+You can save multiple versions of your agent as you iterate on the instructions and tools, allowing you to compare how different configurations perform.
+
+All your local agents can be accessed any time from the **My Resources**->**Local Resources**->**Agents** ->**Local** section in the AI Toolkit view.
+
 ## Key Takeaways
 
 - Agent Builder in the AI Toolkit offers a comprehensive two-panel interface that separates agent configuration from testing and evaluation.

@@ -6,9 +6,10 @@
 ## Learning Objectives
 
 By the end of this workshop, you should be able to:
-- Explore and compare models in the AITK Model catalog, to select the best fit for your use-case.
+- Explore and compare models in the AITK Model Catalog, to select the best fit for your use-case.
 - Augment models with prompts and data to get more accurate and grounded responses in the AITK Playground.
 - Prototype an agent by combining models and instructions with tools via MCP (Model Context Protocol) using the AITK Agent Builder.
+- Export your agent prototype into code using your preferred SDK and programming language for further customization and deployment.
 
 ## Resources
 
@@ -17,12 +18,14 @@ By the end of this workshop, you should be able to:
 
 ## Lab Outline
 
-The lab is organized into 4 sections, taking you through the process of prototyping a multimodal agent with Microsoft Foundry and the AI Toolkit.
+The lab is organized into the following sections, taking you through the process of prototyping a multimodal agent with Microsoft Foundry and the AI Toolkit.
 
-1. **Part 1 - Model Selection** Model selection is an essential step in building AI solutions. In this section, you will explore the AI Toolkit Model Catalog to compare and select models that best fit your business scenario.
-2. **Part 2 - Model Augmentation** Once you have selected a model, you will learn how to augment it using prompt engineering and context data to improve its performance and relevance to your specific use case.
-3. **Part 3 - Agent Prototyping** In this section, you will use the AITK Agent Builder to prototype an agent. You will combine your selected and augmented models with instructions and tools via MCP (Model Context Protocol).
-4. **Part 4 - From Prototype to Code** Finally, you will learn how to export your agent prototype into code that can be integrated into your applications.
+1. **Get Started** Set up your workshop environment, sign in to Azure and GitHub, and configure the AI Toolkit extension in Visual Studio Code.
+2. **Model Selection** Explore the AI Toolkit Model Catalog to discover, filter, and compare models that best fit your business scenario, leveraging GitHub Copilot for comparative analysis.
+3. **Model Augmentation** Augment your selected model using prompt engineering and grounding data to improve its performance and relevance to your specific use case.
+4. **Agent Building** Use the AITK Agent Builder to prototype an AI agent. Combine your selected model with detailed instructions and tools via MCP (Model Context Protocol) servers for sales analysis and inventory management.
+5. **Migrate to Code** Export your agent prototype into code using your preferred SDK and programming language, for further customization and deployment. 
+6. **Bonus: Evaluations** *(Optional)* Manually evaluate your agent's responses using Agent Builder's evaluation features.
 
 ## Business Scenario
 
