@@ -8,9 +8,12 @@ To access Agent Builder, in the AI Toolkit view, locate the **Build** section un
 
 ![Create New Agent](../../img/create-new-agent.png)
 
-Agent Builder's UI is organized into two sections. The left side of Agent Builder enables you to define the basic information for the agent such as its name, model choice, instructions, and any relevant tools. The right side of Agent Builder is where you can both chat with the agent and test its responses.
+Agent Builder's UI is organized into two sections. The left side of Agent Builder enables you to define the basic information for the agent such as its name, model choice, instructions, and any relevant tools. The right side of Agent Builder is where you can both chat with the agent and evaluate the agent's responses.
 
 ![Agent Builder](../../img/agent-builder.png)
+
+> [!NOTE]
+> The Evaluation features are only available once you've defined a variable within your agent's Instructions. Evaluations are further explored in the Bonus section of this lab.
 
 ## Step 2: Create the Agent
 
