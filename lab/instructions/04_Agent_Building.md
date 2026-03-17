@@ -4,34 +4,29 @@ In this section, you will learn how to create the Cora agent with Agent Builder 
 
 ## Step 1: Explore Agent Builder
 
-To access Agent Builder, in the AI Toolkit view, locate the **Build** section under **Development Tools**. Expand it and click on **Create Agent**. Next, select **Design with Builder** to open the Agent Builder interface in a new tab within Visual Studio Code.
+To access Agent Builder, in the AI Toolkit view, locate the **Build** section under **Developer Tools**. Expand it and click on **Create Agent**. Next, select **Open Agent Builder** to open the Agent Builder interface in a new tab within Visual Studio Code.
 
 ![Create New Agent](../../img/create-new-agent.png)
 
-<!--![Agent Builder](../../img/agent-builder.png)-->
+Agent Builder's UI is organized into two sections. The left side of Agent Builder enables you to define the basic information for the agent such as its name, model choice, instructions, and any relevant tools. The right side of Agent Builder is where you can both chat with the agent and test its responses.
 
-Agent Builder's UI is organized into two sections. The left side of Agent Builder enables you to define the basic information for the agent such as its name, model choice, instructions, and any relevant tools. The right side of Agent Builder is where you can both chat with the agent and evaluate the agent's responses.
-
-> [!NOTE]
-> The **Evaluation** features are only available once you've defined a variable within your agent's **Instructions**. Evaluations are further explored in the **Bonus** section of this lab.
->
+![Agent Builder](../../img/agent-builder.png)
 
 ## Step 2: Create the Agent
 
 Let's create Zava's Cora agent! Within the **Agent name** field, enter **Cora**. For the agent's **Model**, select the **gpt-5.3-chat (via Microsoft Foundry)** model instance.
-
-<!--![Agent Basic Information](../../img/agent-basic-information.png)-->
 
 ## Step 3: Provide Instructions for the Agent
 
 Similarly to what we've previously done in the Model Playground, we'll now need to define the behavior of the agent, through the system prompt. 
 
 > [!TIP]
-> The Agent Builder provides a **Generate** feature that uses a large language model (LLM) to generate a set of instructions from a description of your agent's task. 
-> It also offers a **Inspire** feature that provides a sample set of instructions that you can use as a starting point for your agent.
+> The Agent Builder provides a **Generate** feature that uses a large language model (LLM) to generate a set of instructions from a description of your agent's task.
+> It also offers a **Inspire me** feature that provides a sample set of instructions that you can use as a starting point for your agent.
 > Both features are helpful if you need guidance in crafting the agent's instructions.
 
-<!-->![Generate Agent Instruction](../../img/generate-agent-instruction.png)-->
+![Generate Agent Instruction](../../img/generate-agent-instruction.png)
+
 
 For the sake of this lab, we'll leverage a set of instructions similar to the one we used in the [previous section](./03_Model_Augmentation.md):
 
@@ -161,10 +156,6 @@ I’m the store manager. Identify what’s in the photo, then find the closest m
 ```
 
 ![Agent Builder Playground](../../img/agent-builder-playground.png)
-
-If the agent wants to call a tool, a notification will appear in Visual Studio Code requesting to run one or more tools (for example, `semantic_search_products`). Select **Yes** to execute each tool call. In a production app, you typically only require approval for sensitive actions.
-
-![Yes run tool.](../../img/yes-run-tool.png)
 
 Assuming the agent executes a tool call, a section appears in the agent output indicating which tool was invoked.
 

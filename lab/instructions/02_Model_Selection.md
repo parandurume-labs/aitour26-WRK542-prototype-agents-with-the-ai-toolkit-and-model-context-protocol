@@ -25,7 +25,7 @@ Since the list is quite consistent, you can use the filtering options to narrow 
 ### Filter by Publisher
 
 1. Click on the **Publisher** filter dropdown to filter by the model publisher, such as Microsoft, Meta, Cohere, etc. Note that you can find both open-source and proprietary models.
-2. Select **DeepSeek** to view models from this leading provider.
+2. Select **Meta** to view models from this leading provider.
 
 ### Filter by Model Feature
 
@@ -35,19 +35,20 @@ Since the list is quite consistent, you can use the filtering options to narrow 
 ## Step 2: Deploy Models to Your Subscription
 
 After applying filters, you'll see a refined list of models.
-Locate **Deep Seek R1** in the filtered results. It's a multimodal model with strong reasoning capabilities, using a step-by-step training process.
+Locate **Llama-4-Maverick-17B-128E-Instruct-FP8** in the filtered results. It's a multimodal model with good reasoning capabilities.
 
 2. Click **Deploy** on the model tile to open the deployment configuration window.  
 
 ![Add Model](../../img/add_model.png)
 
-3. Drag the slider of the **Token Per Minute** rate to the right to increase it to 115K. Leave the other parameters as default and click on **Deploy to Microsoft Foundry** to provision an instance of the model to your subscription.
+3. Drag the slider of the **Token Per Minute** rate to the right to increase it to 120K. Leave the other parameters as default and click on **Deploy to Microsoft Foundry** to provision an instance of the model to your subscription.
 
 ![Deployment Configuration](../../img/deployment_configuration.png)
 
 ## Step 3: Open the Playground for Testing
 
 1. In the left sidebar, locate the **My Resources** section and expand the resources under your Microsoft Foundry project.
+1. Under the **Models** section, you should see the model instance you just deployed. You should also see a pre-deployed instance of **gpt-5.3-chat** for comparison testing later on and an instance of **text-embedding-3-small** that we will use in the next section for vector search and retrieval augmented generation.
 1. Right-click on the model instance you just deployed and then select **Open in Playground** from the dropdown menu to start testing the model in the Playground interface.
 ![Try in playground](../../img/try_in_playground.png)
 
