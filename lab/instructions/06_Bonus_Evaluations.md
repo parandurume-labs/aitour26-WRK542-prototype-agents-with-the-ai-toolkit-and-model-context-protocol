@@ -32,7 +32,7 @@ Your personality is:​
 > [!NOTE]
 > Make sure the Model is still set to **gpt-5.3-chat (via Microsoft Foundry)**.
 
-All variables are stored in the **Variables** section in Agent Builder. ignore the error message you see in the screenshot below, as we are going to pass values for the variable through the Evaluation tab.
+All variables are stored in the **Variables** section in Agent Builder. Ignore the error message you see in the screenshot below, as we are going to pass values for the variable through the Evaluation tab.
 
 ![Agent variables.](../../img/agent-variables.png)
 

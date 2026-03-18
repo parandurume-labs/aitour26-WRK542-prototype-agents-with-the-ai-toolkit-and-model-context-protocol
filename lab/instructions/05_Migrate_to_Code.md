@@ -50,7 +50,7 @@ For example, if you selected the **Microsoft Agent Framework** SDK with **Python
 2. Install the required dependencies by using:
 
 ```
-pip install --no-deps agent-framework==1.0.0b260107  agent-framework-core==1.0.0b260107 agent-framework-azure-ai==1.0.0b260107
+pip install --no-deps agent-framework==1.0.0rc3 agent-framework-core==1.0.0rc3 agent-framework-azure-ai==1.0.0rc3 
 ```
 3. Authenticate to Azure:
 
