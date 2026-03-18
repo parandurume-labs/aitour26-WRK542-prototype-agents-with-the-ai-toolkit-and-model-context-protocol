@@ -120,13 +120,13 @@ To address that, we'll connect Cora to two MCP servers configured for this works
 - **Sales Analysis MCP server** (sales metrics + semantic product search)
 - **Inventory MCP server** (stock levels + safe transfers)
 
-To start the servers, within Visual Studio Code, **press <kbd>F5</kbd> to start the MCP Servers** and wait for both servers to initialize. You should see two new terminal windows open, one for each server.
+To start the servers, within Visual Studio Code, **press <kbd>CTRL+F5</kbd> to start the MCP Servers** and wait for both servers to initialize. You should see two new terminal windows open, one for each server.
 Double check that you get the message `Uvicorn is running on port XXXX` in both terminal windows, indicating that the servers are running.
 
 ![MCP Servers running](../../img/mcp_servers_running.png)
 
 > [!TIP]
-> Alternatevely, you can also start the MCP servers through the UI, by navigating to the 'Run and Debug' tab in Visual Studio Code and then clicking the green play button on the top.
+> Alternatevely, you can also start the MCP servers through the UI, by clicking on the 'Run'->'Run without debugging'.
 > ![Run and debug](../../img/run-and-debug.png)
 
 ## Step 5: Add the MCP Server Sales Tools to the Agent

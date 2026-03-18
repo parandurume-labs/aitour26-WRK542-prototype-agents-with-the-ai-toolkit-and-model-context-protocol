@@ -46,13 +46,20 @@ If you'd like to run the code, save the file and follow the comments at the top 
 
 For example, if you selected the **Microsoft Agent Framework** SDK with **Python**, follow the instructions below:
 
-1. Open a new terminal in Visual Studio Code by selecting **Terminal** -> **New Terminal** from the top menu.
-2. Install the required dependencies by using:
+1. In the cora-app.py file, locate the section where the MCP servers are configured and verify that the URLs and ports match those of your locally running MCP servers. 
+
+> [!WARNING]
+> The url should be in the format of `http://localhost:PORT_NUMBER/mcp`. Remove any final slashes in the url if there are any, as they can cause connection issues. 
+
+2. Open a new terminal in Visual Studio Code by selecting **Terminal** -> **New Terminal** from the top menu.
+
+3. Install the required dependencies by using:
 
 ```
-pip install --no-deps agent-framework==1.0.0rc3 agent-framework-core==1.0.0rc3 agent-framework-azure-ai==1.0.0rc3 
+pip install --no-deps agent-framework==1.0.0rc3 agent-framework-core==1.0.0rc3 agent-framework-azure-ai==1.0.0rc3 azure-ai-projects==2.0.0b4 azure-ai-agents==1.2.0b5 azure-ai-inference==1.0.0b9
 ```
-3. Authenticate to Azure:
+
+4. Authenticate to Azure:
 
 ```
 az login
@@ -60,12 +67,12 @@ az login
 
 You'll be prompted to open a browser window and fill in a code to complete the authentication. Once back in the terminal, press **Enter** to confirm the Azure subscription selection.
 
-7. Navigate to the directory where the code file is saved:
+5. Navigate to the directory where the code file is saved:
 
 ```
 cd src
 ```
-8. Run the script using:
+6. Run the script using:
 
 ```
 python cora-app.py
