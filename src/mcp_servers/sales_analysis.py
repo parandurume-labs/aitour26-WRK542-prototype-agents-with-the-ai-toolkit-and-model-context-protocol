@@ -13,8 +13,9 @@ from contextlib import asynccontextmanager
 from datetime import UTC, datetime
 from typing import Annotated, AsyncIterator, Optional
 
-from azure.monitor.opentelemetry import configure_azure_monitor
 from fastmcp import FastMCP
+from opentelemetry.instrumentation.auto_instrumentation import initialize
+from opentelemetry.instrumentation.mcp import McpInstrumentor
 from pydantic import Field
 from sqlalchemy import and_, func, select, text
 from starlette.requests import Request
@@ -34,6 +35,10 @@ from zava_shop_shared.models.sqlite import (
     Supplier,
 )
 
+initialize()
+
+McpInstrumentor().instrument()
+
 # Import Azure OpenAI for embeddings
 # Support both running as module (-m mcp_servers.sales_analysis) and directly (python sales_analysis.py)
 try:
@@ -49,18 +54,6 @@ except ImportError:
 config = Config()
 
 logger = logging.getLogger(__name__)
-
-for name in [
-    "azure.core.pipeline.policies.http_logging_policy",
-    "azure.ai.agents",
-    "azure.ai.projects",
-    "azure.core",
-    "azure.identity",
-    "uvicorn.access",
-    "azure.monitor.opentelemetry.exporter.export._base",
-]:
-    logging.getLogger(name).setLevel(logging.WARNING)
-
 
 db_provider = FinanceSQLiteProvider()
 
@@ -78,7 +71,7 @@ async def app_lifespan(server: FastMCP) -> AsyncIterator:
 
 
 # Create MCP server
-mcp = FastMCP("mcp-zava-sales", lifespan=app_lifespan, stateless_http=True)
+mcp = FastMCP("mcp-zava-sales", lifespan=app_lifespan)
 
 
 @mcp.custom_route("/health", methods=["GET"])
@@ -383,10 +376,6 @@ if __name__ == "__main__":
         asyncio.run(test_semantic_search())
     else:
         logger.info("🚀 Starting Sales Analysis MCP Server (SQLite Edition)")
-
-        # Configure Azure Monitor if connection string is available
-        if config.applicationinsights_connection_string:
-            configure_azure_monitor(connection_string=config.applicationinsights_connection_string)
 
         # Configure server settings
         port = int(os.getenv("PORT", 8004))
