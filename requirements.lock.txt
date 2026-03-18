@@ -6,33 +6,29 @@
 #
 -e ./shared
     # via -r requirements.in
-aiofile==3.9.0
-    # via py-key-value-aio
 aiosqlite==0.20.0
     # via
     #   -r requirements.in
     #   zava-shop-shared
 annotated-types==0.7.0
     # via pydantic
-anyio==4.12.1
+anyio==4.12.0
     # via
     #   httpx
     #   mcp
     #   openai
-    #   py-key-value-aio
     #   sse-starlette
     #   starlette
-    #   watchfiles
-asgiref==3.11.1
+asgiref==3.11.0
     # via opentelemetry-instrumentation-asgi
 attrs==25.4.0
     # via
     #   cyclopts
     #   jsonschema
     #   referencing
-authlib==1.6.9
+authlib==1.6.6
     # via fastmcp
-azure-core==1.38.3
+azure-core==1.37.0
     # via
     #   azure-core-tracing-opentelemetry
     #   azure-identity
@@ -41,7 +37,7 @@ azure-core==1.38.3
     #   msrest
 azure-core-tracing-opentelemetry==1.0.0b12
     # via azure-monitor-opentelemetry
-azure-identity==1.25.3
+azure-identity==1.25.1
     # via azure-monitor-opentelemetry-exporter
 azure-monitor-opentelemetry==1.8.2
     # via -r requirements.in
@@ -50,14 +46,14 @@ azure-monitor-opentelemetry-exporter==1.0.0b45
     #   -r requirements.in
     #   azure-monitor-opentelemetry
 beartype==0.22.9
-    # via py-key-value-aio
-black==26.3.1
+    # via
+    #   py-key-value-aio
+    #   py-key-value-shared
+black==25.12.0
     # via -r requirements.in
-cachetools==7.0.5
+cachetools==6.2.4
     # via py-key-value-aio
-caio==0.9.25
-    # via aiofile
-certifi==2026.2.25
+certifi==2025.11.12
     # via
     #   httpcore
     #   httpx
@@ -67,27 +63,32 @@ cffi==2.0.0
     # via cryptography
 cfgv==3.5.0
     # via pre-commit
-charset-normalizer==3.4.6
+charset-normalizer==3.4.4
     # via requests
 click==8.3.1
     # via
     #   black
+    #   typer
     #   uvicorn
+cloudpickle==3.1.2
+    # via pydocket
 colorama==0.4.6
     # via
     #   click
     #   pytest
     #   tqdm
-coverage[toml]==7.13.5
+coverage[toml]==7.13.0
     # via pytest-cov
-cryptography==46.0.5
+cryptography==46.0.3
     # via
     #   authlib
     #   azure-identity
     #   msal
     #   pyjwt
-cyclopts==4.10.0
+cyclopts==4.4.0
     # via fastmcp
+diskcache==5.6.3
+    # via py-key-value-aio
 distlib==0.4.0
     # via virtualenv
 distro==1.9.0
@@ -96,19 +97,19 @@ dnspython==2.8.0
     # via email-validator
 docstring-parser==0.17.0
     # via cyclopts
-docutils==0.22.4
+docutils==0.22.3
     # via rich-rst
 email-validator==2.3.0
     # via pydantic
 exceptiongroup==1.3.1
     # via fastmcp
-fastmcp==3.1.1
+fakeredis[lua]==2.33.0
+    # via pydocket
+fastmcp==2.14.0
     # via -r requirements.in
-filelock==3.25.2
-    # via
-    #   python-discovery
-    #   virtualenv
-greenlet==3.3.2
+filelock==3.20.1
+    # via virtualenv
+greenlet==3.3.0
     # via sqlalchemy
 h11==0.16.0
     # via
@@ -123,7 +124,7 @@ httpx==0.28.1
     #   openai
 httpx-sse==0.4.3
     # via mcp
-identify==2.6.18
+identify==2.6.15
     # via pre-commit
 idna==3.11
     # via
@@ -131,7 +132,7 @@ idna==3.11
     #   email-validator
     #   httpx
     #   requests
-importlib-metadata==8.7.1
+importlib-metadata==8.7.0
     # via opentelemetry-api
 iniconfig==2.3.0
     # via pytest
@@ -139,25 +140,25 @@ isodate==0.7.2
     # via msrest
 jaraco-classes==3.4.0
     # via keyring
-jaraco-context==6.1.1
+jaraco-context==6.0.1
     # via keyring
-jaraco-functools==4.4.0
+jaraco-functools==4.3.0
     # via keyring
-jiter==0.13.0
+jiter==0.12.0
     # via openai
-jsonref==1.1.0
-    # via fastmcp
-jsonschema==4.26.0
+jsonschema==4.25.1
     # via mcp
-jsonschema-path==0.4.5
+jsonschema-path==0.3.4
     # via fastmcp
 jsonschema-specifications==2025.9.1
     # via jsonschema
 keyring==25.7.0
     # via py-key-value-aio
+lupa==2.6
+    # via fakeredis
 markdown-it-py==4.0.0
     # via rich
-mcp==1.26.0
+mcp==1.24.0
     # via
     #   -r requirements.in
     #   fastmcp
@@ -167,7 +168,7 @@ more-itertools==10.8.0
     # via
     #   jaraco-classes
     #   jaraco-functools
-msal==1.35.1
+msal==1.34.0
     # via
     #   azure-identity
     #   msal-extensions
@@ -177,11 +178,11 @@ msrest==0.7.1
     # via azure-monitor-opentelemetry-exporter
 mypy-extensions==1.1.0
     # via black
-nodeenv==1.10.0
+nodeenv==1.9.1
     # via pre-commit
 oauthlib==3.3.1
     # via requests-oauthlib
-openai==2.29.0
+openai==2.13.0
     # via -r requirements.in
 openapi-pydantic==0.5.1
     # via fastmcp
@@ -190,7 +191,7 @@ opentelemetry-api==1.38.0
     #   -r requirements.in
     #   azure-core-tracing-opentelemetry
     #   azure-monitor-opentelemetry-exporter
-    #   fastmcp
+    #   opentelemetry-exporter-prometheus
     #   opentelemetry-instrumentation
     #   opentelemetry-instrumentation-asgi
     #   opentelemetry-instrumentation-dbapi
@@ -205,6 +206,9 @@ opentelemetry-api==1.38.0
     #   opentelemetry-instrumentation-wsgi
     #   opentelemetry-sdk
     #   opentelemetry-semantic-conventions
+    #   pydocket
+opentelemetry-exporter-prometheus==0.59b0
+    # via pydocket
 opentelemetry-instrumentation==0.59b0
     # via
     #   -r requirements.in
@@ -250,8 +254,8 @@ opentelemetry-sdk==1.38.0
     #   -r requirements.in
     #   azure-monitor-opentelemetry
     #   azure-monitor-opentelemetry-exporter
+    #   opentelemetry-exporter-prometheus
     #   opentelemetry-resource-detector-azure
-    #   opentelemetry-semantic-conventions-ai
 opentelemetry-semantic-conventions==0.59b0
     # via
     #   -r requirements.in
@@ -267,8 +271,7 @@ opentelemetry-semantic-conventions==0.59b0
     #   opentelemetry-instrumentation-urllib3
     #   opentelemetry-instrumentation-wsgi
     #   opentelemetry-sdk
-    #   opentelemetry-semantic-conventions-ai
-opentelemetry-semantic-conventions-ai==0.4.15
+opentelemetry-semantic-conventions-ai==0.4.13
     # via opentelemetry-instrumentation-mcp
 opentelemetry-util-http==0.59b0
     # via
@@ -281,22 +284,22 @@ opentelemetry-util-http==0.59b0
     #   opentelemetry-instrumentation-urllib
     #   opentelemetry-instrumentation-urllib3
     #   opentelemetry-instrumentation-wsgi
-packaging==26.0
+packaging==25.0
     # via
     #   black
-    #   fastmcp
     #   opentelemetry-instrumentation
     #   opentelemetry-instrumentation-flask
     #   pytest
-pathable==0.5.0
+pathable==0.4.4
     # via jsonschema-path
-pathspec==1.0.4
+pathspec==0.12.1
     # via black
-platformdirs==4.9.4
+pathvalidate==3.3.1
+    # via py-key-value-aio
+platformdirs==4.5.1
     # via
     #   black
     #   fastmcp
-    #   python-discovery
     #   virtualenv
 pluggy==1.6.0
     # via
@@ -304,11 +307,19 @@ pluggy==1.6.0
     #   pytest-cov
 pre-commit==4.5.1
     # via -r requirements.in
-psutil==7.2.2
+prometheus-client==0.23.1
+    # via
+    #   opentelemetry-exporter-prometheus
+    #   pydocket
+psutil==7.1.3
     # via azure-monitor-opentelemetry-exporter
-py-key-value-aio[filetree,keyring,memory]==0.4.4
-    # via fastmcp
-pycparser==3.0
+py-key-value-aio[disk,keyring,memory,redis]==0.3.0
+    # via
+    #   fastmcp
+    #   pydocket
+py-key-value-shared==0.3.0
+    # via py-key-value-aio
+pycparser==2.23
     # via cffi
 pydantic[email]==2.12.5
     # via
@@ -321,13 +332,15 @@ pydantic[email]==2.12.5
     #   zava-shop-shared
 pydantic-core==2.41.5
     # via pydantic
-pydantic-settings==2.13.1
+pydantic-settings==2.12.0
     # via mcp
+pydocket==0.15.4
+    # via fastmcp
 pygments==2.19.2
     # via
     #   pytest
     #   rich
-pyjwt[crypto]==2.12.1
+pyjwt[crypto]==2.10.1
     # via
     #   mcp
     #   msal
@@ -342,27 +355,31 @@ pytest-asyncio==1.3.0
     # via -r requirements.in
 pytest-cov==7.0.0
     # via -r requirements.in
-python-discovery==1.1.3
-    # via virtualenv
-python-dotenv==1.2.2
+python-dotenv==1.2.1
     # via
     #   -r requirements.in
     #   fastmcp
     #   pydantic-settings
-python-multipart==0.0.22
+python-json-logger==4.0.0
+    # via pydocket
+python-multipart==0.0.20
     # via mcp
-pytokens==0.4.1
+pytokens==0.3.0
     # via black
-pywin32==311
+pywin32==311; sys_platform == 'win32'
     # via mcp
-pywin32-ctypes==0.2.3
+pywin32-ctypes==0.2.3; sys_platform == 'win32'
     # via keyring
 pyyaml==6.0.3
     # via
-    #   fastmcp
     #   jsonschema-path
     #   pre-commit
-referencing==0.37.0
+redis==7.1.0
+    # via
+    #   fakeredis
+    #   py-key-value-aio
+    #   pydocket
+referencing==0.36.2
     # via
     #   jsonschema
     #   jsonschema-path
@@ -370,39 +387,48 @@ referencing==0.37.0
 requests==2.32.5
     # via
     #   azure-core
+    #   jsonschema-path
     #   msal
     #   msrest
     #   requests-oauthlib
 requests-oauthlib==2.0.0
     # via msrest
-rich==14.3.3
+rich==14.2.0
     # via
     #   cyclopts
     #   fastmcp
+    #   pydocket
     #   rich-rst
+    #   typer
 rich-rst==1.3.2
     # via cyclopts
 rpds-py==0.30.0
     # via
     #   jsonschema
     #   referencing
-ruff==0.15.6
+ruff==0.14.9
     # via -r requirements.in
+shellingham==1.5.4
+    # via typer
 sniffio==1.3.1
     # via openai
-sqlalchemy[asyncio]==2.0.48
+sortedcontainers==2.4.0
+    # via fakeredis
+sqlalchemy[asyncio]==2.0.45
     # via
     #   -r requirements.in
     #   zava-shop-shared
-sse-starlette==3.3.3
+sse-starlette==3.0.4
     # via mcp
-starlette==0.52.1
+starlette==0.50.0
     # via
     #   -r requirements.in
     #   mcp
     #   sse-starlette
-tqdm==4.67.3
+tqdm==4.67.1
     # via openai
+typer==0.20.0
+    # via pydocket
 typing-extensions==4.15.0
     # via
     #   aiosqlite
@@ -415,33 +441,31 @@ typing-extensions==4.15.0
     #   opentelemetry-api
     #   opentelemetry-sdk
     #   opentelemetry-semantic-conventions
-    #   py-key-value-aio
+    #   py-key-value-shared
     #   pydantic
     #   pydantic-core
+    #   pydocket
     #   pytest-asyncio
     #   referencing
     #   sqlalchemy
     #   starlette
+    #   typer
     #   typing-inspection
 typing-inspection==0.4.2
     # via
     #   mcp
     #   pydantic
     #   pydantic-settings
-uncalled-for==0.2.0
-    # via fastmcp
-urllib3==2.6.3
+urllib3==2.6.2
     # via requests
-uvicorn==0.42.0
+uvicorn==0.38.0
     # via
     #   -r requirements.in
     #   fastmcp
     #   mcp
-virtualenv==21.2.0
+virtualenv==20.35.4
     # via pre-commit
-watchfiles==1.1.1
-    # via fastmcp
-websockets==16.0
+websockets==15.0.1
     # via fastmcp
 wrapt==1.17.3
     # via
