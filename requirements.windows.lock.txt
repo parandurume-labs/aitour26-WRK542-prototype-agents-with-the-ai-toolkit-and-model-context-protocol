@@ -27,8 +27,9 @@ anyio==4.12.0
     #   starlette
 asgiref==3.11.0
     # via opentelemetry-instrumentation-asgi
-attrs==25.4.0
+attrs==24.3.0
     # via
+    #   -r requirements.in
     #   aiohttp
     #   cyclopts
     #   jsonschema
@@ -423,8 +424,9 @@ redis==7.1.0
     #   fakeredis
     #   py-key-value-aio
     #   pydocket
-referencing==0.36.2
+referencing==0.35.1
     # via
+    #   -r requirements.in
     #   jsonschema
     #   jsonschema-path
     #   jsonschema-specifications
@@ -495,7 +497,6 @@ typing-extensions==4.15.0
     #   pydantic-core
     #   pydocket
     #   pytest-asyncio
-    #   referencing
     #   sqlalchemy
     #   starlette
     #   typer
@@ -525,5 +526,3 @@ yarl==1.23.0
     # via aiohttp
 zipp==3.23.0
     # via importlib-metadata
-
-
