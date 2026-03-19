@@ -133,7 +133,7 @@ To access GitHub Copilot Chat, select the **Toggle Chat** icon at the top of the
 
 ![Toggle chat button.](../../img/toggle-chat.png)
 
-Expand the model selection dropdown to pick *Claude Opus 4.5*.
+Expand the model selection dropdown - by clicking on **Auto** - to pick *Claude Opus 4.5*.
 ![Select claude Opus 4.5](../../img/select_claude_opus.png)
 
 > [!TIP]
@@ -148,11 +148,11 @@ Try the following prompt in the Copilot chat window:
 #mcp_azure_mcp_foundry I am exploring models for an AI agent that should support Zava - a DIY retailer with 20 stores across the United States and an online channel - on store operations and head office sales analysis. I am evaluating Llama-4-Maverick-17B-128E-Instruct-FP8 and OpenAI GPT-5.3-chat. Which one would you recommend for this scenario, and why? Explain the trade-offs between models (e.g., reasoning ability, cost, latency, context length) so that I can make an informed choice.
 ```
 
-To answer this, Copilot leverages the *Foundry MCP server* tools, which provide model recommendations based on your use case. If asked for approval to allow Copilot to access the Foundry MCP server tools - click **Allow in this session** to proceed.
-
-In the final response, you should see a detailed comparison between the two models, along with a recommendation on which one to select for your AI agent project.
+To answer this, Copilot leverages the *Foundry MCP server* tools, which provide model recommendations based on your use case. If asked for approval to allow Copilot to access the Foundry MCP server tools - click **Allow in this session** to proceed. This might happen multiple times, as Copilot may need to access several tools to gather the necessary information for the analysis.
 
 ![Get AI model guidance](../../img/get_ai_model_guidance.png)
+
+In the final response, you should see a detailed comparison between the two models, along with a recommendation on which one to select for your AI agent project.
 
 ## Step 6: Import selected model from Microsoft Foundry
 
