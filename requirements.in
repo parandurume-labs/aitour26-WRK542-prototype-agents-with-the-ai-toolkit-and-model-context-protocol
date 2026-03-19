@@ -58,3 +58,7 @@ opentelemetry-util-http==0.59b0
 pytest>=7.4.0
 pytest-asyncio>=0.23.0
 pytest-cov>=4.1.0
+
+## Pin referencing/attrs due to compatibility issues
+referencing>=0.35.0,<0.36.0
+attrs>=24.0.0,<25.0.0
