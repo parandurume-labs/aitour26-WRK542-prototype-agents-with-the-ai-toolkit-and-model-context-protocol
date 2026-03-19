@@ -72,7 +72,7 @@ Next, you'll be redirected to a window to complete the login process. Enter the 
 -  TAP: +++@lab.CloudPortalCredential(User1).TAP+++
 
 > [!NOTE]
-> You'll be asked to confirm if you want to allow the automatic sign-in to all desktop apps and websites on the device. Click **Yes, all apps** to proceed. Then click **Done** to complete the login process and return to VS Code.
+> You'll be asked to confirm if you want to allow the automatic sign-in to all desktop apps and websites on the device. Click **Yes** to proceed.
 
 Back in your VS Code instance, you'll be asked to select the Foundry project to use. Select the only available option, which is the project pre-deployed for this workshop.
 

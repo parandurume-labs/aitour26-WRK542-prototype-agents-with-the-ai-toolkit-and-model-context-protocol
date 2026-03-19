@@ -126,8 +126,11 @@ Double check that you get the message `Uvicorn is running on port XXXX` in both 
 ![MCP Servers running](../../img/mcp_servers_running.png)
 
 > [!TIP]
-> Alternatevely, you can also start the MCP servers through the UI, by clicking on the 'Run'->'Run without debugging'.
+> Alternatively, you can also start the MCP servers through the UI, by clicking on the 'Run'->'Run without debugging'.
 > ![Run and debug](../../img/run-and-debug.png)
+
+> [!WARNING]
+> If the servers fail to start at the first attempt with an importlib error, please try running them again. This is a known timing issue between Python's bytecode compilation and Windows file system operations. Simply re-run the servers - the second attempt will succeed because all necessary files are already cached.
 
 ## Step 5: Add the MCP Server Sales Tools to the Agent
 
