@@ -15,18 +15,12 @@ from contextlib import asynccontextmanager
 from typing import Annotated, AsyncIterator
 
 from fastmcp import FastMCP
-from opentelemetry.instrumentation.auto_instrumentation import initialize
-from opentelemetry.instrumentation.mcp import McpInstrumentor
 from pydantic import Field
 from sqlalchemy import and_, select
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
 from zava_shop_shared.inventory_sqlite import InventorySQLiteProvider
 from zava_shop_shared.models.sqlite import Inventory, Product, Store
-
-initialize()
-
-McpInstrumentor().instrument()
 
 # Configure logging
 logging.basicConfig(
@@ -42,9 +36,16 @@ db: InventorySQLiteProvider = InventorySQLiteProvider()
 
 @asynccontextmanager
 async def app_lifespan(server: FastMCP) -> AsyncIterator:
+    # Initialize Telemetry only after the process has started (avoids import-time race on Windows)
+    from opentelemetry.instrumentation.auto_instrumentation import initialize
+    from opentelemetry.instrumentation.mcp import McpInstrumentor
+
+    initialize()
+    McpInstrumentor().instrument()
+
     # Initialize database connection once at startup
     await db.open_engine()
-    logger.info("Database connection initialized")
+    logger.info("Database connection initialized and Telemetry started")
     yield
     await db.close_engine()
 
