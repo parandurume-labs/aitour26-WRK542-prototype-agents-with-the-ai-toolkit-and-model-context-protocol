@@ -11,12 +11,11 @@ import math
 import os
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime
-from typing import Annotated, AsyncIterator, Optional
+from typing import Annotated, AsyncIterator
 
-from azure.monitor.opentelemetry import configure_azure_monitor
 from fastmcp import FastMCP
 from pydantic import Field
-from sqlalchemy import and_, func, select, text
+from sqlalchemy import select, text
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
 from zava_shop_shared.config import Config
@@ -38,10 +37,12 @@ from zava_shop_shared.models.sqlite import (
 # Support both running as module (-m mcp_servers.sales_analysis) and directly (python sales_analysis.py)
 try:
     from mcp_servers.sales_analysis_text_embeddings import SemanticSearchTextEmbedding
+
     USE_REAL_EMBEDDINGS = True
 except ImportError:
     try:
         from sales_analysis_text_embeddings import SemanticSearchTextEmbedding
+
         USE_REAL_EMBEDDINGS = True
     except ImportError:
         USE_REAL_EMBEDDINGS = False
@@ -65,14 +66,24 @@ for name in [
 db_provider = FinanceSQLiteProvider()
 
 # Initialize semantic search provider (real or fake)
-semantic_search_provider = SemanticSearchTextEmbedding() if USE_REAL_EMBEDDINGS else None
+semantic_search_provider = (
+    SemanticSearchTextEmbedding() if USE_REAL_EMBEDDINGS else None
+)
 
 
 @asynccontextmanager
 async def app_lifespan(server: FastMCP) -> AsyncIterator:
+    # Initialize Azure Monitor only after the process has started (avoids import-time race on Windows)
+    if config.applicationinsights_connection_string:
+        from azure.monitor.opentelemetry import configure_azure_monitor
+
+        configure_azure_monitor(
+            connection_string=config.applicationinsights_connection_string
+        )
+
     # Initialize database connection once at startup
     await db_provider.open()
-    logger.info("Database connection initialized")
+    logger.info("Database connection initialized and Telemetry started")
     yield
     await db_provider.close_engine()
 
@@ -106,15 +117,25 @@ async def _semantic_search_products_impl(
 ) -> list[dict]:
     """Implementation of semantic search for products."""
     try:
-        logger.info(f"Searching products with query: '{query_description}', limit: {limit}")
+        logger.info(
+            f"Searching products with query: '{query_description}', limit: {limit}"
+        )
 
         # Generate embedding for the query using Azure OpenAI
-        if not (USE_REAL_EMBEDDINGS and semantic_search_provider and semantic_search_provider.is_available()):
-            logger.error("Azure OpenAI not configured. Semantic search requires Azure OpenAI embeddings.")
+        if not (
+            USE_REAL_EMBEDDINGS
+            and semantic_search_provider
+            and semantic_search_provider.is_available()
+        ):
+            logger.error(
+                "Azure OpenAI not configured. Semantic search requires Azure OpenAI embeddings."
+            )
             return []
 
         logger.info("Using Azure OpenAI for embeddings")
-        query_embedding = semantic_search_provider.generate_query_embedding(query_description)
+        query_embedding = semantic_search_provider.generate_query_embedding(
+            query_description
+        )
         if not query_embedding:
             logger.error("Failed to generate embedding from Azure OpenAI")
             return []
@@ -141,7 +162,10 @@ async def _semantic_search_products_impl(
                     Supplier.bulk_discount_percent,
                 )
                 .select_from(Product)
-                .join(ProductDescriptionEmbedding, Product.product_id == ProductDescriptionEmbedding.product_id)
+                .join(
+                    ProductDescriptionEmbedding,
+                    Product.product_id == ProductDescriptionEmbedding.product_id,
+                )
                 .join(Category, Product.category_id == Category.category_id)
                 .join(ProductType, Product.type_id == ProductType.type_id)
                 .join(Supplier, Product.supplier_id == Supplier.supplier_id)
@@ -176,7 +200,9 @@ async def _semantic_search_products_impl(
                                 "supplier_rating": float(row.supplier_rating),
                                 "lead_time_days": row.lead_time_days,
                                 "minimum_order_amount": float(row.minimum_order_amount),
-                                "bulk_discount_percent": float(row.bulk_discount_percent),
+                                "bulk_discount_percent": float(
+                                    row.bulk_discount_percent
+                                ),
                             },
                         }
                     )
@@ -198,8 +224,12 @@ async def semantic_search_products(
             description="Zava product you're looking for using natural language. Include purpose, features, or use case. For example: 'waterproof electrical box for outdoor use', '15 amp circuit breaker', or 'LED light bulbs for kitchen ceiling'."
         ),
     ],
-    limit: Annotated[int, Field(description="Maximum number of results to return")] = 20,
-    min_similarity: Annotated[float, Field(description="Minimum similarity score (0.0 to 1.0)")] = 0.3,
+    limit: Annotated[
+        int, Field(description="Maximum number of results to return")
+    ] = 20,
+    min_similarity: Annotated[
+        float, Field(description="Minimum similarity score (0.0 to 1.0)")
+    ] = 0.3,
 ) -> list[dict]:
     """
     **ALWAYS USE THIS TOOL** for queries related to finding, listing, or describing Zava products based on **features, usage, or natural language descriptions**.
@@ -222,7 +252,9 @@ async def semantic_search_products(
         >>>     limit=5
         >>> )
     """
-    return await _semantic_search_products_impl(query_description, limit, min_similarity)
+    return await _semantic_search_products_impl(
+        query_description, limit, min_similarity
+    )
 
 
 @mcp.tool()
@@ -256,9 +288,15 @@ async def get_database_schema() -> str:
                     col_type = str(column.type)
                     nullable = "NULL" if column.nullable else "NOT NULL"
                     primary = "PRIMARY KEY" if column.primary_key else ""
-                    columns_info.append(f"  - {column.name}: {col_type} {nullable} {primary}".strip())
+                    columns_info.append(
+                        f"  - {column.name}: {col_type} {nullable} {primary}".strip()
+                    )
 
-                schema_str = f"# Table: {table_name}\n\n**Columns:**\n" + "\n".join(columns_info) + "\n"
+                schema_str = (
+                    f"# Table: {table_name}\n\n**Columns:**\n"
+                    + "\n".join(columns_info)
+                    + "\n"
+                )
                 schemas.append(schema_str)
 
         return "\n".join(schemas)
@@ -269,7 +307,9 @@ async def get_database_schema() -> str:
 
 
 @mcp.tool()
-async def execute_sales_query(sql_query: Annotated[str, Field(description="A well-formed SQLite query.")]) -> str:
+async def execute_sales_query(
+    sql_query: Annotated[str, Field(description="A well-formed SQLite query.")],
+) -> str:
     """
     Use this tool **ONLY** for fetching quantitative, sales, inventory, pricing, or store-related data.
 
@@ -358,7 +398,9 @@ async def test_semantic_search():
         print(f'\n🔍 Query: "{query}"')
         print("-" * 70)
 
-        results = await _semantic_search_products_impl(query_description=query, limit=5, min_similarity=0.0)
+        results = await _semantic_search_products_impl(
+            query_description=query, limit=5, min_similarity=0.0
+        )
 
         if results:
             print(f"✅ Found {len(results)} products:\n")
@@ -384,10 +426,6 @@ if __name__ == "__main__":
     else:
         logger.info("🚀 Starting Sales Analysis MCP Server (SQLite Edition)")
 
-        # Configure Azure Monitor if connection string is available
-        if config.applicationinsights_connection_string:
-            configure_azure_monitor(connection_string=config.applicationinsights_connection_string)
-
         # Configure server settings
         port = int(os.getenv("PORT", 8004))
         host = os.getenv("HOST", "0.0.0.0")
@@ -398,4 +436,6 @@ if __name__ == "__main__":
             port,
         )
 
-        mcp.run(transport="http", host=host, port=port, path="/mcp", stateless_http=True)
+        mcp.run(
+            transport="http", host=host, port=port, path="/mcp", stateless_http=True
+        )
