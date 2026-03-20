@@ -55,6 +55,7 @@ Combine it with the following user prompt:
 Here’s a photo from the store floor. What is this component, and what details should I capture (e.g., amperage, pole type) before searching our catalog and checking stock?
 ```
 
+Click the paper airplane icon to execute the multimodal prompt.
 The model will analyze the image and provides an explanation along with some suggested details to capture, to search the catalog and check stock. Read through the response and see if it aligns with the expectations set in the system message.
 
 Let's now test the model with a user query which is not relevant to Zava's business. Enter the following prompt:
