@@ -18,18 +18,17 @@ Since the list is quite consistent, you can use the filtering options to narrow 
 
 ### Filter by Hosting Provider
 
-1. Click on the **Hosted by** filter dropdown. You have several options, such as GitHub (providing free-to-use token-rate limited models), Microsoft Foundry, OpenAI, and you can even leverage models hosted on your local infrastructure, through Ollama or ONNX.
+1. Click on the **All Filters** filter dropdown to display the `Hosted by` list. You have several options, such as GitHub (providing free-to-use token-rate limited models), Microsoft Foundry, OpenAI, and you can even leverage models hosted on your local infrastructure, through Ollama or ONNX.
 
 2. Select **Microsoft Foundry** to view models hosted in Microsoft Foundry, which provide enterprise-grade security and compliance features, ideal for enterprise applications.
 
 ### Filter by Publisher
 
-1. Click on the **Publisher** filter dropdown to filter by the model publisher, such as Microsoft, Meta, Cohere, etc. Note that you can find both open-source and proprietary models.
-2. Select **Meta** to view models from this leading provider.
+1. Continue to scroll down the filter list until you reach the **Publisher** section and select **Meta** to view models from this leading provider.
 
 ### Filter by Model Feature
 
-1. Click on the **Feature** filter dropdown to filter by model capabilities, such as image/audio or video processing, tool calling, etc.
+1. Continue to scroll down the filter list until you reach the **Feature** section to filter by model capabilities, such as image/audio or video processing, tool calling, etc.
 2. Select **Image Attachment** to find multimodal models that support visual input processing and enables multimodal interactions combining text and images.
 
 ## Step 2: Deploy Models to Your Subscription
@@ -133,11 +132,12 @@ To access GitHub Copilot Chat, select the **Toggle Chat** icon at the top of the
 
 ![Toggle chat button.](../../img/toggle-chat.png)
 
-Expand the model selection dropdown - by clicking on **Auto** - to pick *Claude Opus 4.5*.
-![Select claude Opus 4.5](../../img/select_claude_opus.png)
+Select `Auto` then select `Other models` - to pick *Claude Opus 4.5*.
 
 > [!TIP]
 > Expand the 'Other models' section in the dropdown to find the Claude Opus 4.5 model, if you cannot see it in the main list of models.
+
+![Select claude Opus 4.5](../../img/select_claude_opus.png)
 
 > [!WARNING]
 > If you are not logged in, you won't be able to select the model. Ensure you have completed the GitHub Copilot sign-in process as per previous lab section or send a prompt to trigger the sign-in flow.
