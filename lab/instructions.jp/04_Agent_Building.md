@@ -210,17 +210,7 @@ What are our top 3 selling products last year
 Transfer 5 units of the Single Pole Circuit Breaker 20A from a store with surplus stock to the online store.
 ```
 
-エージェントは、移動ツールを実行する前に確認を求めるはずです。移動元／移動先の店舗が正しいことを確認できた場合のみ、承認してください。完了後、在庫レベルを再度確認し、移動が反映されているか検証します。
-
-さらに試す場合は、次のプロンプトも送信してみてください。
-
-```
-What was the total revenue last month, split by online vs physical stores?
-```
-
-```
-Which stores have low stock on circuit breakers right now?
-```
+エージェントから在庫移動の確認が求められます。在庫移動を実行するには yes と入力してください。
 
 ## エージェントをローカルに保存する
 
