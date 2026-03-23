@@ -77,7 +77,7 @@ What’s the weather like in Tokyo today?
 
 グラウンディング データを追加するために、Playground の **ファイル添付** 機能を使います。これにより、モデルが参照できるドキュメントをアップロードできます。
 
-アップロードするのは、Zava 商品カタログの一部を含む JSON ファイルです。内容を確認したい場合は、***/data/*** フォルダーにある ***zava_product_catalog.json*** を開いてください。
+アップロードするのは、Zava 商品カタログの一部を含む JSON ファイルです。内容を確認したい場合は、**data** フォルダーにある **zava_product_catalog.json** を開いてください。
 
 1. Playground に戻り、プロンプト入力欄のファイル添付アイコンをクリックします。
 ![File attachment icon](../../img/file_attachment_icon.png)

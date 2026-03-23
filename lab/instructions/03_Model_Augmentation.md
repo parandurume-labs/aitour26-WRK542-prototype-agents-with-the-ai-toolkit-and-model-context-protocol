@@ -74,7 +74,7 @@ For our use case, we are going to provide the model with some context about Zava
 
 To add grounding data, we will use the **file attachment** feature in the Playground. This allows us to upload documents that the model can reference when generating responses.
 
-The document we are going to upload is a JSON file containing a subset of Zava's product catalog. If you want to have a look at its content, browse to the `/data/` folder and locate the file named `zava_product_catalog.json`. Open it in the code editor.
+The document we are going to upload is a JSON file containing a subset of Zava's product catalog. If you want to have a look at its content, browse to the **data** folder and locate the file named **zava_product_catalog.json**. Open it in the code editor.
 
 1. Back in the Playground, click the file attachment icon in the prompt input area.
 ![File attachment icon](../../img/file_attachment_icon.png)
