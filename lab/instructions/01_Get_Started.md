@@ -90,17 +90,19 @@ In this workshop, you'll also be using GitHub Copilot AI features in Visual Stud
 
     ![GitHub Copilot Sign In](../../img/github_copilot_sign_in.png)
 
-    Then select
+    Then select `Continue with GitHub`
 
     ![Select GitHub](../../img/sign-into-github.png)
 
-1. A new browser tab will open, prompting you to authorize VS Code. Click on **Continue with GitHub** to sign-in with the same GHE account you used before.  In the next window, click on **Authorize Visual Studio Code**.
-
-    ![Authorize VS Code](../../img/authorize-vs-code.png)
+1. A new browser tab will open, prompting you to authorize VS Code. Click on **Continue with GitHub** to sign-in with the same GHE account you used before.
 
     ![Authorize GitHub Copilot](../../img/authorize_github_copilot.png)
 
-1. A prompt will appear, notifying you that the website is trying to open Visual Studio Code. Click on **Open Visual Studio Code** to proceed and come back to your VS Code instance.
+    In the next window, click on **Authorize Visual Studio Code**.
+
+    ![Authorize VS Code](../../img/authorize-vs-code.png)
+
+1. Select `Open` to continue.
 
 <!-- ## Got issues when logging in with GitHub?
 

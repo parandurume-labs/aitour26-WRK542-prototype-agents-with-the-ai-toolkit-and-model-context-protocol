@@ -102,7 +102,7 @@ VS Code に戻ると、使用する Foundry プロジェクトの選択を求め
 
     ![Authorize VS Code](../../img/authorize-vs-code.png)
 
-1. Web サイトが Visual Studio Code を開こうとしている旨のプロンプトが表示されます。**Open Visual Studio Code** をクリックして、VS Code に戻ります。
+1. 続行するには Open を選択します
 
 <!-- ## Got issues when logging in with GitHub?
 
