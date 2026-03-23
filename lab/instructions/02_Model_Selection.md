@@ -132,7 +132,7 @@ To access GitHub Copilot Chat, select the **Toggle Chat** icon at the top of the
 
 ![Toggle chat button.](../../img/toggle-chat.png)
 
-Expand the model selection dropdown - by clicking on **Auto** - to pick *Claude Opus 4.5*.
+Select `Auto` then select `Other models` - to pick *Claude Opus 4.5*.
 ![Select claude Opus 4.5](../../img/select_claude_opus.png)
 
 > [!TIP]
