@@ -92,9 +92,12 @@ VS Code に戻ると、使用する Foundry プロジェクトの選択を求め
 
     ![Select GitHub](../../img/sign-into-github.png)
 
+    ![Authorize VS Code](../../img/authorize-vs-code.png)
+
 1. 新しいブラウザー タブが開き、VS Code の認可が求められます。**Continue with GitHub** をクリックし、同じ GHE アカウントでサインインします。次の画面で **Authorize Visual Studio Code** をクリックします。
 
     ![Authorize GitHub Copilot](../../img/authorize_github_copilot.png)
+
 
 1. Web サイトが Visual Studio Code を開こうとしている旨のプロンプトが表示されます。**Open Visual Studio Code** をクリックして、VS Code に戻ります。
 
