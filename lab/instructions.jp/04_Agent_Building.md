@@ -207,7 +207,7 @@ What are our top 3 selling products last year
 在庫移動のテストとして、次のような依頼を送ってみます。
 
 ```
-在庫に余裕のある店舗からオンライン ストアへ、Single Pole Circuit Breaker 20A を 5 個移動してください。
+Transfer 5 units of the Single Pole Circuit Breaker 20A from a store with surplus stock to the online store.
 ```
 
 エージェントは、移動ツールを実行する前に確認を求めるはずです。移動元／移動先の店舗が正しいことを確認できた場合のみ、承認してください。完了後、在庫レベルを再度確認し、移動が反映されているか検証します。
@@ -215,11 +215,11 @@ What are our top 3 selling products last year
 さらに試す場合は、次のプロンプトも送信してみてください。
 
 ```
-先月の総売上高を、オンライン vs 実店舗で分けて教えてください。
+What was the total revenue last month, split by online vs physical stores?
 ```
 
 ```
-現在、どの店舗でブレーカーの在庫が少ないですか？
+Which stores have low stock on circuit breakers right now?
 ```
 
 ## エージェントをローカルに保存する
