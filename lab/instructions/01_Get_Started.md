@@ -41,6 +41,7 @@ Copy and paste the following command block to the terminal and press **Enter**. 
 ; git pull `
 ; Remove-Item -Recurse -Force .git `
 ; .\.venv\Scripts\activate `
+; $env:OTEL_SDK_DISABLED="true" `
 ; code .
 ```
 
