@@ -64,7 +64,7 @@ Here’s a photo from the store floor. What is this component, and what details 
 次に、Zava の業務と無関係な質問を試します。次のプロンプトを入力します。
 
 ```
-今日のサンフランシスコの天気は？
+What’s the weather like in Tokyo today? 
 ```
 
 モデルは、Zava 関連の問い合わせのみ支援できると丁寧に伝えるはずです。これは、システムメッセージのガイドラインに従えることの確認になります。
@@ -95,7 +95,7 @@ Here’s a photo from the store floor. What is this component, and what details 
 4. 次のプロンプトを入力します。
 
 ```
-添付した Zava 商品カタログから、家庭用 15A 回路で一般的に使われるブレーカー候補を提案し、推奨前に確認すべき点を説明してください。
+From the attached Zava product catalog, suggest a circuit breaker option that would commonly be used for a 15-amp household circuit, and explain what you would verify before recommending it.
 ```
 
 モデルはアップロードされた商品カタログを参照し、ブレーカーの要件に合う候補を根拠付きで提案します。

@@ -90,6 +90,7 @@ The document we are going to upload is a JSON file containing a subset of Zava's
 
 3. Once the file is uploaded, it will appear as an attachment below the prompt input area.
 4. Enter the following prompt in the text field:
+
 ```
 From the attached Zava product catalog, suggest a circuit breaker option that would commonly be used for a 15-amp household circuit, and explain what you would verify before recommending it.
 ```
