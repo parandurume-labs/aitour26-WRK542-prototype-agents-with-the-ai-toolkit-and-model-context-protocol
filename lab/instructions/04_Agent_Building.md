@@ -179,7 +179,7 @@ If the agent didn’t use tools as expected, one technique is to update the **In
 
 Next, ask the following questions:
 
-```text
+```
 What were the sales by store for the last quarter
 ```
 
