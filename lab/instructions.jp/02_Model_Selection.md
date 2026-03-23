@@ -74,7 +74,7 @@
 1. テキストフィールド（「Type a prompt」というプレースホルダーが表示されている場所）に以下のプロンプトを入力します：
 
 ```
-I'm a store manager at a DIY retailer. What are the most important metrics to review in a weekly sales summary, and why?
+I'm a store manager at a DIY retailer. What are the most important metrics to review in a weekly sales summary, and why? Respond in Japanese.
 ```
 2. 紙飛行機アイコンをクリックして、両方のモデルで同時にプロンプトを実行します
 
@@ -93,13 +93,15 @@ Here's a simple snapshot of sales trend and stock on hand:
 | C     | -15%              | 7                     | 10                    |
 
 How should we allocate stock today to minimize stockouts and lost sales? Explain your reasoning step by step, and list the 3 most important additional data points you would ask for.
+
+Respond in Japanese.
 ```
 
 次に、モデルの画像処理能力をテストします：
 
 1. テキストフィールドに以下のプロンプトを入力します：
 ```
-Describe what's in this image and what kind of electrical component it appears to be.
+In Japanese, describe what's in this image and what kind of electrical component it appears to be.
 ```
 
 2. 画像添付アイコンをクリックして、入力として画像を追加します

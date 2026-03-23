@@ -99,7 +99,7 @@ Next, test the models' image processing capabilities:
 
 1. Enter this prompt in the text field:
 ```
-In Japanese, describe what's in this image and what kind of electrical component it appears to be.
+Describe what's in this image and what kind of electrical component it appears to be.
 ```
 
 2. Click the image attachment icon to add a picture as input
