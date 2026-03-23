@@ -90,6 +90,8 @@ VS Code に戻ると、使用する Foundry プロジェクトの選択を求め
 
     ![GitHub Copilot Sign In](../../img/github_copilot_sign_in.png)
 
+    ![Select GitHub](../../img/sign-into-github.png)
+
 1. 新しいブラウザー タブが開き、VS Code の認可が求められます。**Continue with GitHub** をクリックし、同じ GHE アカウントでサインインします。次の画面で **Authorize Visual Studio Code** をクリックします。
 
     ![Authorize GitHub Copilot](../../img/authorize_github_copilot.png)
