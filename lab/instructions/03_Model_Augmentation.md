@@ -14,6 +14,11 @@ The system message is a critical component of the prompt that sets the behavior 
 
 4. **Break Down Complex Instructions**: If the task is complex, consider breaking it down into simpler, step-by-step instructions to guide the model effectively.
 
+First thing first, let's clear the chat history in the Playground to start with a clean slate. Click on **New Playground** at the top left corner of the screen.
+
+![New Playground](../../img/new_playground.png)
+
+
 In the **System Prompt** field of the Playground, in the right pane, enter the following system message:
 
 ```
@@ -50,6 +55,7 @@ Combine it with the following user prompt:
 Here’s a photo from the store floor. What is this component, and what details should I capture (e.g., amperage, pole type) before searching our catalog and checking stock?
 ```
 
+Click the paper airplane icon to execute the multimodal prompt.
 The model will analyze the image and provides an explanation along with some suggested details to capture, to search the catalog and check stock. Read through the response and see if it aligns with the expectations set in the system message.
 
 Let's now test the model with a user query which is not relevant to Zava's business. Enter the following prompt:
@@ -68,7 +74,7 @@ For our use case, we are going to provide the model with some context about Zava
 
 To add grounding data, we will use the **file attachment** feature in the Playground. This allows us to upload documents that the model can reference when generating responses.
 
-The document we are going to upload is a JSON file containing a subset of Zava's product catalog. If you want to have a look at its content, browse to the `/data/` folder and locate the file named `zava_product_catalog.json`. Open it in the code editor.
+The document we are going to upload is a JSON file containing a subset of Zava's product catalog. If you want to have a look at its content, browse to the **data** folder and locate the file named **zava_product_catalog.json**. Open it in the code editor.
 
 1. Back in the Playground, click the file attachment icon in the prompt input area.
 ![File attachment icon](../../img/file_attachment_icon.png)
@@ -84,6 +90,7 @@ The document we are going to upload is a JSON file containing a subset of Zava's
 
 3. Once the file is uploaded, it will appear as an attachment below the prompt input area.
 4. Enter the following prompt in the text field:
+
 ```
 From the attached Zava product catalog, suggest a circuit breaker option that would commonly be used for a 15-amp household circuit, and explain what you would verify before recommending it.
 ```

@@ -4,30 +4,32 @@ In this section, you will learn how to create the Cora agent with Agent Builder 
 
 ## Step 1: Explore Agent Builder
 
-To access Agent Builder, in the AI Toolkit view, select **Agent Builder**.
+To access Agent Builder, in the AI Toolkit view, locate the **Build** section under **Developer Tools**. Expand it and click on **Create Agent**. Next, select **Open Agent Builder** to open the Agent Builder interface in a new tab within Visual Studio Code.
 
-![Agent Builder](../../img/agent-builder.png)
+![Create New Agent](../../img/create-new-agent.png)
 
 Agent Builder's UI is organized into two sections. The left side of Agent Builder enables you to define the basic information for the agent such as its name, model choice, instructions, and any relevant tools. The right side of Agent Builder is where you can both chat with the agent and evaluate the agent's responses.
 
+![Agent Builder](../../img/agent-builder.png)
+
 > [!NOTE]
-> The **Evaluation** features are only available once you've defined a variable within your agent's **Instructions**. Evaluations are further explored in the **Bonus** section of this lab.
->
+> The Evaluation features are only available once you've defined a variable within your agent's Instructions. Evaluations are further explored in the Bonus section of this lab.
 
 ## Step 2: Create the Agent
 
-Let's create Zava's Cora agent! In **Agent Builder** select **+ New Agent**. Within the **Agent name** field, enter **Cora**. For the agent's **Model**, select the **gpt-4o (via Microsoft Foundry)** model instance.
-
-![Agent Basic Information](../../img/agent-basic-information.png)
+Let's create Zava's Cora agent! Within the **Agent name** field, enter **Cora**. For the agent's **Model**, select the **gpt-5.3-chat (via Microsoft Foundry)** model instance.
 
 ## Step 3: Provide Instructions for the Agent
 
 Similarly to what we've previously done in the Model Playground, we'll now need to define the behavior of the agent, through the system prompt. 
 
 > [!TIP]
-> The Agent Builder provides a **Generate** feature that uses a large language model (LLM) to generate a set of instructions from a description of your agent's task. 
-> This feature is helpful if you need guidance in crafting the agent's instructions.
-> ![Generate Agent Instruction](../../img/generate-agent-instruction.png)
+> The Agent Builder provides a **Generate** feature that uses a large language model (LLM) to generate a set of instructions from a description of your agent's task.
+> It also offers a **Inspire me** feature that provides a sample set of instructions that you can use as a starting point for your agent.
+> Both features are helpful if you need guidance in crafting the agent's instructions.
+
+![Generate Agent Instruction](../../img/generate-agent-instruction.png)
+
 
 For the sake of this lab, we'll leverage a set of instructions similar to the one we used in the [previous section](./03_Model_Augmentation.md):
 
@@ -118,21 +120,17 @@ To address that, we'll connect Cora to two MCP servers configured for this works
 - **Sales Analysis MCP server** (sales metrics + semantic product search)
 - **Inventory MCP server** (stock levels + safe transfers)
 
-To start the servers, within Visual Studio Code, **press <kbd>F5</kbd> to start the MCP Servers** and wait for both servers to initialize. You should see two new terminal windows open, one for each server.
+To start the servers, within Visual Studio Code, **press <kbd>CTRL+F5</kbd> to start the MCP Servers** and wait for both servers to initialize. You should see two new terminal windows open, one for each server.
 Double check that you get the message `Uvicorn is running on port XXXX` in both terminal windows, indicating that the servers are running.
 
 ![MCP Servers running](../../img/mcp_servers_running.png)
 
 > [!TIP]
-> Alternatevely, you can also start the MCP servers through the UI, by navigating to the 'Run and Debug' tab in Visual Studio Code and then clicking the green play button on the top.
+> Alternatively, you can also start the MCP servers through the UI, by clicking on the 'Run'->'Run without debugging'.
 > ![Run and debug](../../img/run-and-debug.png)
 
-Next, navigate to the mcp servers configuration file, located at ./.vscode/mcp.json and click on the *Start* button above each Zava MCP server name.
-
-![MCP start buttons](../../img/mcp_json_start_buttons.png)
-
 > [!WARNING]
-> If you used GitHub Copilot Chat in previous steps of the lab, you might see a *Restart* button instead. This happens because GitHub Copilot Chat by default tries to start all the MCP servers defined in the mcp.json file when it is opened. The initial start attempt failed though as the servers were not running yet. In this case, simply click the *Restart* button to enable the AI Toolkit to connect to the already running MCP servers.
+> If the servers fail to start at the first attempt with an importlib error, please try running them again. This is a known timing issue between Python's bytecode compilation and Windows file system operations. Simply re-run the servers - the second attempt will succeed because all necessary files are already cached.
 
 ## Step 5: Add the MCP Server Sales Tools to the Agent
 
@@ -142,21 +140,14 @@ Back in Agent Builder, select the **+** icon next to **Tools** to open the wizar
 
 ![Add tool.](../../img/add-tool.png)
 
-Then select the **MCP Server** option. When prompted, select **Use Tools Added in Visual Studio Code**.
+In the **Configured** tab, scroll down to the **Local Tools** section, and select **zava-sales-analysis-server**.
 
-1. Unselect all tools by unchecking the box at the top of the wizard next to the search bar.
-   ![Deselect all tools.](../../img/deselect-all-tools.png)
-1. In the list of tools available, type **sales** to filter the list of MCP Server tools.
-1. Select these four tools.
-- `mcp_zava-sales-an_semantic_search_products`
-- `mcp_zava-sales-an_execute_sales_query`
-- `mcp_zava-sales-an_get_database_schema`
-- `mcp_zava-sales-an_get_current_utc_date`
-1. Select **OK**.
-   ![Select Sales Tools](../../img/select-sales-tools.png)
+![Select Sales Analysis Server](../../img/select-sales-analysis-server.png)
+
+Now you should see the server listed under the **Tool** section of your agent.
 
 > [!NOTE]
-> Ensure the Sales Analysis MCP server is running before adding these tools. If the server is not running, the tools will not appear in the list.
+> Ensure the Sales Analysis MCP server is running before adding its tools to your agent. .
 
 ## Step 6: Test Sales Queries with the Agent
 
@@ -171,10 +162,6 @@ I’m the store manager. Identify what’s in the photo, then find the closest m
 ```
 
 ![Agent Builder Playground](../../img/agent-builder-playground.png)
-
-If the agent wants to call a tool, a notification will appear in Visual Studio Code requesting to run one or more tools (for example, `semantic_search_products`). Select **Yes** to execute each tool call. In a production app, you typically only require approval for sensitive actions.
-
-![Yes run tool.](../../img/yes-run-tool.png)
 
 Assuming the agent executes a tool call, a section appears in the agent output indicating which tool was invoked.
 
@@ -203,21 +190,14 @@ What are our top 3 selling products last year
 ### Step 7: Add the Inventory MCP Server Tools to the Agent
 
 Now let's add the inventory tools to the agent, so it can check stock levels and perform safe transfers.
+To do that you should repeat the same steps you've done to configure the sales tools.
 
-1. First, back in Agent Builder, select **Edit Tool List** button within the **Tool** section, to open the wizard for editing tools to the agent.
-
-![Edit Tool List](../../img/edit-tool-list.png)
-1. Type **invent** to filter the tools
-1. Select both tools:
-
-    - `mcp_zava-inventor_get_stock_level_by_product_id`
-    - `mcp_zava-inventor_transfer_stock`
-
-4. Select **OK**
-   ![Select Inventory Tools](../../img/select-inventory-tools.png)
+1. Click on the **+** icon next to **Tools** in the Agent Builder interface.
+2. In the **Configured** tab, scroll down to the **Local Tools** section, and select **zava-inventory-server**.
+3. Now you should see the inventory server listed under the **Tool** section of your agent, alongside the sales server.
 
 > [!NOTE]
-> Ensure the Inventory MCP server is running before adding these tools. If the server is not running, the tools will not appear in the list.
+> Ensure the Inventory MCP server is running before adding its tools to your agent.
 
 ## Step 8: Test Inventory Checks and Transfers with the Agent
 
@@ -238,6 +218,14 @@ What was the total revenue last month, split by online vs physical stores?
 ```
 Which stores have low stock on circuit breakers right now?
 ```
+
+## Save your agent locally
+
+Once you're done with testing, make sure to click on the **Save to Local** button at the top right corner of the Agent Builder interface to save your agent configuration locally. This will allow you to load and use the same agent configuration in the future without having to recreate it from scratch.
+
+You can save multiple versions of your agent as you iterate on the instructions and tools, allowing you to compare how different configurations perform.
+
+All your local agents can be accessed any time from the **My Resources**->**Local Resources**->**Agents** ->**Local** section in the AI Toolkit view.
 
 ## Key Takeaways
 

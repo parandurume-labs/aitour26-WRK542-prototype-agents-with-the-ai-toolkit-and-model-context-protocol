@@ -41,6 +41,7 @@ Copy and paste the following command block to the terminal and press **Enter**. 
 ; git pull `
 ; Remove-Item -Recurse -Force .git `
 ; .\.venv\Scripts\activate `
+; $env:OTEL_SDK_DISABLED="true" `
 ; code .
 ```
 
@@ -49,23 +50,19 @@ Copy and paste the following command block to the terminal and press **Enter**. 
 
 ## Authenticate to Azure
 
-In your Visual Studio Code instance, you should be able to see two extensions already installed: 
-- The **AI Toolkit**: this is the extension we will be using to interact with various AI models and services in this lab.
-- The **Microsoft Foundry** extension: it's installed as a bundle of the AI Toolkit and provides access to Microsoft Foundry hosted models. 
-If they are correctly installed, you should see their icons in the left sidebar of VS Code, as per screenshot below.
+In your Visual Studio Code instance, you should be able to see the AI Toolkit extension already installed. Click on it to open the AI Toolkit sidebar.
 
 ![Installed extensions](../../img/installed_extensions.png)
 
 > [!TIP]
-> If you don't see the icons, click on the ellipsis (...) at the bottom of the sidebar to see the full list of installed extensions. 
+> If you don't see the AITK icon, click on the ellipsis (...) at the bottom of the sidebar to see the full list of installed extensions.
 
 > [!WARNING]
 > Auto-update of the VS Code extensions has been disabled to ensure consistency with the lab manual instructions and avoid unexpected issues. Please refrain from updating these extensions during the lab.
 
+Next, click on **Set Default Project** -> **Sign in to Azure**.
 
-Now click on the Microsoft Foundry extension icon, and then click on **Set Default Project** -> **Sign in to Azure**.
-
-![Set Default Project](../../img/set_default_project.png)
+<!--![Set Default Project](../../img/set_default_project.png)-->
 
 You'll be prompted with a popup to confirm with the Azure login. Click **Allow**.
 
@@ -76,11 +73,13 @@ Next, you'll be redirected to a window to complete the login process. Enter the 
 -  TAP: +++@lab.CloudPortalCredential(User1).TAP+++
 
 > [!NOTE]
-> You'll be asked to confirm if you want to allow the automatic sign-in to all desktop apps and websites on the device. Click **Yes, all apps** to proceed. Then click **Done** to complete the login process and return to VS Code.
+> You'll be asked to confirm if you want to allow the automatic sign-in to all desktop apps and websites on the device. Click **Yes** to proceed.
 
 Back in your VS Code instance, you'll be asked to select the Foundry project to use. Select the only available option, which is the project pre-deployed for this workshop.
 
 ![Select Project](../../img/select_project.png)
+
+If the login process was successful, you should now see your project listed under **My resources**. From there, you'll be able to access and manage the project resources, like models, agents and tools.
 
 ## Enable GitHub Copilot AI features
 
@@ -89,13 +88,21 @@ In this workshop, you'll also be using GitHub Copilot AI features in Visual Stud
 1. Click on the **Copilot** icon in the right bottom corner of the VS Code window, accompanied by the text "Signed out".
 1. Next, click on **Sign in to use AI features** -> **Continue with GitHub**.
 
-![GitHub Copilot Sign In](../../img/github_copilot_sign_in.png)
+    ![GitHub Copilot Sign In](../../img/github_copilot_sign_in.png)
 
-1. A new browser tab will open, prompting you to authorize VS Code. Click on **Continue** to sign-in with the same GHE account you used before.  In the next window, click on **Authorize Visual Studio Code**.
+    Then select `Continue with GitHub`
 
-![Authorize GitHub Copilot](../../img/authorize_github_copilot.png)
+    ![Select GitHub](../../img/sign-into-github.png)
 
-1. A prompt will appear, notifying you that the website is trying to open Visual Studio Code. Click on **Open Visual Studio Code** to proceed and come back to your VS Code instance.
+1. A new browser tab will open, prompting you to authorize VS Code. Click on **Continue with GitHub** to sign-in with the same GHE account you used before.
+
+    ![Authorize GitHub Copilot](../../img/authorize_github_copilot.png)
+
+    In the next window, click on **Authorize Visual Studio Code**.
+
+    ![Authorize VS Code](../../img/authorize-vs-code.png)
+
+1. Select `Open` to continue.
 
 <!-- ## Got issues when logging in with GitHub?
 

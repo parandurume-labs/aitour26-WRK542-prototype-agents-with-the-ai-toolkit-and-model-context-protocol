@@ -6,9 +6,12 @@ The AI Toolkit provides generated code for agents created in Agent Builder. You 
 
 ## Step 1: Generate the Code
 
-In Agent Builder, scroll down towards the bottom of the left side of the screen and select **View Code**.
+In Agent Builder, click on the **View Code** button at the top right corner of the interface.
 
 ![View code button.](../../img/view-code.png)
+
+> [!NOTE]
+> Make sure you have saved your agent locally, as described in the previous section, otherwise you won't be able to see the **View Code** option.
 
 When prompted, select your preferred client SDK (e.g. *Microsoft Agent Framework*) and programming language (e.g. *Python*). Once the new file is created, save the file to your workspace (under 'src/cora-app.py').
 
@@ -43,51 +46,20 @@ If you'd like to run the code, save the file and follow the comments at the top 
 
 For example, if you selected the **Microsoft Agent Framework** SDK with **Python**, follow the instructions below:
 
-1. Locate the section in the code file that configures MCP server tools. It should look similar to this:
+1. In the cora-app.py file, locate the section where the MCP servers are configured and verify that the URLs and ports match those of your locally running MCP servers. 
 
-   ```python
-   MCPStdioTool(
-       name="VSCode Tools".replace("-", "_"),
-       description="MCP server for VSCode Tools",
-       command="INSERT_COMMAND_HERE",
-       args=[
-           "INSERT_ARGUMENTS_HERE",
-       ]
-   ),
-   ```
+> [!WARNING]
+> The url should be in the format of `http://localhost:PORT_NUMBER/mcp`. Remove any final slashes in the url if there are any, as they can cause connection issues. 
 
-2. Replace the placeholders to point to the two MCP servers used in this workshop (Sales Analysis and Inventory).
+2. Open a new terminal in Visual Studio Code by selecting **Terminal** -> **New Terminal** from the top menu.
 
-For this workshop, the servers run locally at:
-
-- `http://localhost:8004/mcp/` (Sales Analysis MCP server)
-- `http://localhost:8005/mcp/` (Inventory MCP server)
-
-The resulting configuration should look like this:
-
-```python
-MCPStreamableHTTPTool(
-    name="sales_analysis",
-    description="MCP server for Sales Analysis",
-    url="http://localhost:8004/mcp/"
-),
-MCPStreamableHTTPTool(
-    name="inventory_management",
-    description="MCP server for Inventory Management",
-    url="http://localhost:8005/mcp/"
-)
-```
-
-> [!NOTE]
-> Depending on the SDK you selected, this may be configured as an HTTP MCP server URL rather than a local stdio process.
-
-4. Open a new terminal in Visual Studio Code by selecting **Terminal** -> **New Terminal** from the top menu.
-5. Install the required dependencies by using:
+3. Install the required dependencies by using:
 
 ```
-pip install --no-deps agent-framework==1.0.0b260107  agent-framework-core==1.0.0b260107 agent-framework-azure-ai==1.0.0b260107
+pip install --no-deps agent-framework==1.0.0rc3 agent-framework-core==1.0.0rc3 agent-framework-azure-ai==1.0.0rc3
 ```
-6. Authenticate to Azure:
+
+4. Authenticate to Azure:
 
 ```
 az login
@@ -95,15 +67,24 @@ az login
 
 You'll be prompted to open a browser window and fill in a code to complete the authentication. Once back in the terminal, press **Enter** to confirm the Azure subscription selection.
 
-7. Navigate to the directory where the code file is saved:
+5. Navigate to the directory where the code file is saved:
 
 ```
 cd src
 ```
-8. Run the script using:
+6. Run the script using:
 
 ```
 python cora-app.py
+```
+
+> [!TIP]
+> You might want to customize the user inputs to the agent in the script to test out different scenarios and see how the agent performs. Locate the 'USER_INPUTS' array definition in the script and modify the input values as needed. For example:
+```
+USER_INPUTS = [
+    "What are the top 5 best-selling products in the last month?",
+    "Which stores have low stock on circuit breakers right now?"
+]
 ```
 
 > [!NOTE]
