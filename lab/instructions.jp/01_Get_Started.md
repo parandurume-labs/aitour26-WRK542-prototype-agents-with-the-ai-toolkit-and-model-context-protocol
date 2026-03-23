@@ -90,7 +90,7 @@ VS Code に戻ると、使用する Foundry プロジェクトの選択を求め
 
     ![GitHub Copilot Sign In](../../img/github_copilot_sign_in.png)
 
-    次（つぎ）に、選択（せんたく）してください
+    次に「Continue with GitHub」を選択します
 
     ![Select GitHub](../../img/sign-into-github.png)
 
@@ -98,7 +98,7 @@ VS Code に戻ると、使用する Foundry プロジェクトの選択を求め
 
     ![Authorize GitHub Copilot](../../img/authorize_github_copilot.png)
 
-    次（つぎ）に、選択（せんたく）してください
+    次に「Authorize Visual-Studio-Code」を選択します
 
     ![Authorize VS Code](../../img/authorize-vs-code.png)
 
