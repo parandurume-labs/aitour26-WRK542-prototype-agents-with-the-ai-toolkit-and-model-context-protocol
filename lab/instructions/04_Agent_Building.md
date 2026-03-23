@@ -179,7 +179,7 @@ If the agent didn’t use tools as expected, one technique is to update the **In
 
 Next, ask the following questions:
 
-```text
+```
 What were the sales by store for the last quarter
 ```
 
@@ -207,17 +207,7 @@ To test an inventory move, try a transfer request like:
 Transfer 5 units of the Single Pole Circuit Breaker 20A from a store with surplus stock to the online store.
 ```
 
-The agent should ask you to confirm the transfer before it runs the transfer tool. Confirm only if the source and destination stores look correct. Once done, ask the agent to check stock levels again to verify the transfer was successful.
-
-If you'd like to continue testing tool calls with the Cora agent, try submitting the following prompts:
-
-```
-What was the total revenue last month, split by online vs physical stores?
-```
-
-```
-Which stores have low stock on circuit breakers right now?
-```
+The agent will ask you to confirm the inventory transfer. Type `yes` to transfer the inventory.
 
 ## Save your agent locally
 
