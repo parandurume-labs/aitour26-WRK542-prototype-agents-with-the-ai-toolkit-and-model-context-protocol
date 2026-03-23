@@ -48,12 +48,19 @@ GitHub Copilot Chat を開くには、Visual Studio Code 上部の **Toggle Chat
 
 1. cora-app.py 内で MCP サーバー構成のセクションを見つけ、URL とポートがローカルで起動している MCP サーバーと一致していることを確認します。
 
-> [!WARNING]
-> URL は `http://localhost:PORT_NUMBER/mcp` の形式である必要があります。末尾のスラッシュが付いている場合は削除してください（接続問題の原因になることがあります）。
+2. MCPサーバーURLの修正
+   
+    - 接続エラーを回避するため、2箇所のURL設定を以下のように更新してください。
 
-2. Visual Studio Code で **Terminal** -> **New Terminal** を選択して新しいターミナルを開きます。
+    - 修正内容: 末尾のスラッシュ（/）を必ず削除してください。
 
-3. 次を実行して依存関係をインストールします。
+    - 正しい形式: http://localhost:PORT_NUMBER/mcp
+
+        ![MCP Server URL fix](../../img/mcp_url_fix.png)
+
+3. Visual Studio Code で **Terminal** -> **New Terminal** を選択して新しいターミナルを開きます。
+
+4. 次を実行して依存関係をインストールします。
 
 ```
 pip install --no-deps agent-framework==1.0.0rc3 agent-framework-core==1.0.0rc3 agent-framework-azure-ai==1.0.0rc3

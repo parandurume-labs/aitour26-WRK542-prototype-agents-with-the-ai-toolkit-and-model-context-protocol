@@ -48,12 +48,13 @@ For example, if you selected the **Microsoft Agent Framework** SDK with **Python
 
 1. In the cora-app.py file, locate the section where the MCP servers are configured and verify that the URLs and ports match those of your locally running MCP servers. 
 
-> [!WARNING]
-> The url should be in the format of `http://localhost:PORT_NUMBER/mcp`. Remove any final slashes in the url if there are any, as they can cause connection issues. 
+2. Update the MCP Server URLs, there are two of them, you must remove the trailing `/` so that the format is `http://localhost:PORT_NUMBER/mcp`.
 
-2. Open a new terminal in Visual Studio Code by selecting **Terminal** -> **New Terminal** from the top menu.
+    ![MCP Server URL fix](../../img/mcp_url_fix.png)
 
-3. Install the required dependencies by using:
+3. Open a new terminal in Visual Studio Code by selecting **Terminal** -> **New Terminal** from the top menu.
+
+4. Install the required dependencies by using:
 
 ```
 pip install --no-deps agent-framework==1.0.0rc3 agent-framework-core==1.0.0rc3 agent-framework-azure-ai==1.0.0rc3
