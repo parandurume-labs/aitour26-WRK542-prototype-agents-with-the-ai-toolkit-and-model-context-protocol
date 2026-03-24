@@ -36,16 +36,9 @@ db: InventorySQLiteProvider = InventorySQLiteProvider()
 
 @asynccontextmanager
 async def app_lifespan(server: FastMCP) -> AsyncIterator:
-    # Initialize Telemetry only after the process has started (avoids import-time race on Windows)
-    from opentelemetry.instrumentation.auto_instrumentation import initialize
-    from opentelemetry.instrumentation.mcp import McpInstrumentor
-
-    initialize()
-    McpInstrumentor().instrument()
-
     # Initialize database connection once at startup
     await db.open_engine()
-    logger.info("Database connection initialized and Telemetry started")
+    logger.info("Database connection initialized")
     yield
     await db.close_engine()
 

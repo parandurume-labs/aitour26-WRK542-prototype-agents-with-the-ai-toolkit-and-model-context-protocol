@@ -14,13 +14,10 @@ from datetime import UTC, datetime
 from typing import Annotated, AsyncIterator
 
 from fastmcp import FastMCP
-from opentelemetry.instrumentation.auto_instrumentation import initialize
-from opentelemetry.instrumentation.mcp import McpInstrumentor
 from pydantic import Field
 from sqlalchemy import select, text
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
-from zava_shop_shared.config import Config
 from zava_shop_shared.finance_sqlite import FinanceSQLiteProvider
 from zava_shop_shared.models.sqlite import (
     Category,
@@ -34,10 +31,6 @@ from zava_shop_shared.models.sqlite import (
     Store,
     Supplier,
 )
-
-initialize()
-
-McpInstrumentor().instrument()
 
 # Import Azure OpenAI for embeddings
 # Support both running as module (-m mcp_servers.sales_analysis) and directly (python sales_analysis.py)
@@ -53,8 +46,6 @@ except ImportError:
     except ImportError:
         USE_REAL_EMBEDDINGS = False
 
-config = Config()
-
 logger = logging.getLogger(__name__)
 
 db_provider = FinanceSQLiteProvider()
@@ -67,17 +58,9 @@ semantic_search_provider = (
 
 @asynccontextmanager
 async def app_lifespan(server: FastMCP) -> AsyncIterator:
-    # Initialize Azure Monitor only after the process has started (avoids import-time race on Windows)
-    if config.applicationinsights_connection_string:
-        from azure.monitor.opentelemetry import configure_azure_monitor
-
-        configure_azure_monitor(
-            connection_string=config.applicationinsights_connection_string
-        )
-
     # Initialize database connection once at startup
     await db_provider.open()
-    logger.info("Database connection initialized and Telemetry started")
+    logger.info("Database connection initialized")
     yield
     await db_provider.close_engine()
 
