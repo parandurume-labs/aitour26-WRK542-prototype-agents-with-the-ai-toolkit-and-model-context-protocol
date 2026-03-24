@@ -37,7 +37,7 @@ class Config:
         """Initialize configuration with environment variables."""
 
         ABS_DB_PATH = "sqlite+aiosqlite:////workspace/data/retail.db"
-        
+
         # Use absolute path if running in container (/workspace exists), else compute absolute path
         if pathlib.Path("/workspace").exists():
             DEFAULT_SQLITE_URL = ABS_DB_PATH
@@ -48,11 +48,15 @@ class Config:
             DEFAULT_SQLITE_URL = f"sqlite+aiosqlite:///{db_path}"
 
         # SQLite database URL
-        self._sqlite_database_url: str = self._clean_env_value(os.getenv("SQLITE_DATABASE_URL", DEFAULT_SQLITE_URL))
+        self._sqlite_database_url: str = self._clean_env_value(
+            os.getenv("SQLITE_DATABASE_URL", DEFAULT_SQLITE_URL)
+        )
 
         # Load and clean Application Insights connection string
         appinsights_raw = os.getenv("APPLICATIONINSIGHTS_CONNECTION_STRING", "")
-        self._appinsights_connection_string: str = self._clean_env_value(appinsights_raw)
+        self._appinsights_connection_string: str = self._clean_env_value(
+            appinsights_raw
+        )
 
         # Always log configuration info
         self._log_config_info()
@@ -63,11 +67,7 @@ class Config:
 
     def _log_config_info(self) -> None:
         """Log configuration information."""
-
-        logger.info(
-            "APPLICATIONINSIGHTS_CONNECTION_STRING: '%s'",
-            self._appinsights_connection_string,
-        )
+        pass
 
     @property
     def sqlite_database_url(self) -> str:
